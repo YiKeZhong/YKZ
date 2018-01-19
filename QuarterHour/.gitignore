@@ -1,9 +1,6 @@
-*.iml
-.gradle
+
+/.gradle/
+/.idea/
+/build/
+/QuarterHour.iml
 /local.properties
-/.idea/workspace.xml
-/.idea/libraries
-.DS_Store
-/build
-/captures
-.externalNativeBuild
