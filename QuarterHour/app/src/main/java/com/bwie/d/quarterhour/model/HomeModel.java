@@ -6,5 +6,5 @@ package com.bwie.d.quarterhour.model;
 
 public class HomeModel {
 
-    
+//Model
 }
