@@ -18,6 +18,7 @@ public class RetrofitUtils {
                 Retrofit retrofit = new Retrofit.Builder()
                         .baseUrl("")
                         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                        .client(OkHttpUtils.getInstance())
                         .build();
 
                 service = retrofit.create(APIService.class);
