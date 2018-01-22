@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:id="@+id/lin"
+        android:background="#03A9F4"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center_vertical"
+        >
+        <View
+            android:layout_width="8dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            />
+        <com.facebook.drawee.view.SimpleDraweeView
+            fresco:roundedCornerRadius="90dp"
+            android:id="@+id/my_image_view"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+
+            fresco:placeholderImage="@drawable/ic_launcher_background"
+            />
+
+        <View
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            />
+        <TextView
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"
+            android:textSize="22sp"
+            android:layout_marginLeft="15dp"
+            android:text="推荐"/>
+        <View
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            />
+        <ImageView
+            android:src="@drawable/bianji"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+
+            />
+        <View
+            android:layout_width="8dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom_navigation_bar"
+        android:layout_below="@+id/lin">
+
+    </FrameLayout>
+
+    <RadioGroup
+        android:orientation="horizontal"
+        android:id="@+id/bottom_navigation_bar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true">
+
+        <RadioButton
+            android:checked="true"
+            android:drawableTop="@drawable/tuijian_01"
+            android:id="@+id/radio_01"
+            android:text="推荐"
+            android:gravity="center"
+            android:button="@null"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+        <RadioButton
+            android:drawableTop="@drawable/duanzi_01"
+            android:id="@+id/radio_02"
+            android:text="段子"
+            android:textSize="15dp"
+            android:gravity="center"
+            android:button="@null"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+        <RadioButton
+            android:drawableTop="@drawable/shipin_01"
+            android:id="@+id/radio_03"
+            android:text="视频"
+            android:textSize="15dp"
+            android:gravity="center"
+            android:button="@null"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+        <RadioButton
+            android:drawableTop="@drawable/qutu_01"
+            android:id="@+id/radio_04"
+            android:text="趣图"
+            android:textSize="15dp"
+            android:gravity="center"
+            android:button="@null"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+    </RadioGroup>
+
+
+</RelativeLayout >
