@@ -2,10 +2,11 @@ package com.bwie.d.quarterhour.view.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 
 import com.bwie.d.quarterhour.presenter.BasePresenter;
 
-public abstract class BaseActivity<V,T extends BasePresenter<V>> extends Activity {
+public abstract class BaseActivity<V,T extends BasePresenter<V>> extends FragmentActivity {
 
     public T t;
     public abstract T initPresenter();
@@ -13,6 +14,7 @@ public abstract class BaseActivity<V,T extends BasePresenter<V>> extends Activit
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(setContentViewId());
+
         initView();
         initData();
 
