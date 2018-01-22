@@ -18,7 +18,7 @@ public abstract class BaseActivity<V,T extends BasePresenter<V>> extends Activit
         t = initPresenter();
     }
 
-    @Override
+    /*@Override
     protected void onResume() {
         super.onResume();
         t.attach((V) this);
@@ -28,7 +28,7 @@ public abstract class BaseActivity<V,T extends BasePresenter<V>> extends Activit
     protected void onDestroy() {
         super.onDestroy();
         t.detach();
-    }
+    }*/
 
     abstract void initView();
     abstract void initData();
