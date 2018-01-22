@@ -7,7 +7,7 @@
     tools:context="com.bwie.d.quarterhour.view.activity.MainActivity">
 
 
-    <com.bwie.d.quarterhour.view.SlideMenu
+    <com.bwie.d.quarterhour.utiles.SlideMenu
         android:id="@+id/slideMenu"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -15,7 +15,7 @@
         <include layout="@layout/layout_menu"/>
         <!--主界面的布局-->
         <include layout="@layout/layout_main"/>
-    </com.bwie.d.quarterhour.view.SlideMenu>
+    </com.bwie.d.quarterhour.utiles.SlideMenu>
 
 
 </RelativeLayout>

@@ -1,4 +1,4 @@
-package com.bwie.d.quarterhour.view;
+package com.bwie.d.quarterhour.utiles;
 
 import android.content.Context;
 import android.util.AttributeSet;
