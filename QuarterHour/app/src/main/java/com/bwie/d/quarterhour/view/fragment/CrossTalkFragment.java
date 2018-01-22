@@ -20,7 +20,7 @@ public class CrossTalkFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.crosstalkfragment, container, false);
-
+  
         return view;
     }
 }
