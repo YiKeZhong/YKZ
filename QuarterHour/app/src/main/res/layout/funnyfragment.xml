@@ -3,10 +3,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+    <com.liaoinstan.springview.widget.SpringView
+        android:id="@+id/funny_springview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="趣图"
-        />
+        android:layout_height="match_parent">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/funny_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v7.widget.RecyclerView>
+
+    </com.liaoinstan.springview.widget.SpringView>
 
 </LinearLayout>
