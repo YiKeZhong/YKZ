@@ -16,6 +16,8 @@ import com.bwie.d.quarterhour.R;
  */
 
 public class RecommendFragment extends Fragment {
+
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

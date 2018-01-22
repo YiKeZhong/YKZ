@@ -14,11 +14,12 @@ import com.bwie.d.quarterhour.R;
  */
 
 public class Funnyfragment extends Fragment {
+
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.funnyfragment, container, false);
-
         return view;
     }
 }
