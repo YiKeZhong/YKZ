@@ -63,8 +63,8 @@ public class RecommendFragment extends Fragment {
                 fragmentTransaction.commit();
             }
         });*/
-        tabLayout = view.findViewById(R.id.tab_layout);
-        viewPager = view.findViewById(R.id.view_pager);
+        tabLayout = (TabLayout) view.findViewById(R.id.tab_layout);
+        viewPager = (ViewPager) view.findViewById(R.id.view_pager);
 
         list = new ArrayList<>();
         list.add("全部");
