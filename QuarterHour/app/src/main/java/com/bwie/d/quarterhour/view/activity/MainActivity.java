@@ -11,6 +11,7 @@ import com.bwie.d.quarterhour.R;
 import com.bwie.d.quarterhour.presenter.BasePresenter;
 import com.bwie.d.quarterhour.utiles.SlideMenu;
 import com.bwie.d.quarterhour.view.fragment.CrossTalkFragment;
+import com.bwie.d.quarterhour.view.fragment.Funnyfragment;
 import com.bwie.d.quarterhour.view.fragment.RecommendFragment;
 import com.bwie.d.quarterhour.view.fragment.VideoFragment;
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -105,13 +106,14 @@ public class MainActivity extends BaseActivity {
         radio_04.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Funnyfragment funnyfragment = new Funnyfragment();
                 VideoFragment videoFragment = new VideoFragment();
                 radio_01.setCompoundDrawablesWithIntrinsicBounds(null, ContextCompat.getDrawable(MainActivity.this, R.drawable.tuijian_01), null, null);
                 radio_02.setCompoundDrawablesWithIntrinsicBounds(null, ContextCompat.getDrawable(MainActivity.this, R.drawable.duanzi_01), null, null);
                 radio_03.setCompoundDrawablesWithIntrinsicBounds(null, ContextCompat.getDrawable(MainActivity.this, R.drawable.shipin_01), null, null);
                 radio_04.setCompoundDrawablesWithIntrinsicBounds(null, ContextCompat.getDrawable(MainActivity.this, R.drawable.qutu_02), null, null);
                 FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.frameLayout, videoFragment);
+                fragmentTransaction.replace(R.id.frameLayout, funnyfragment);
                 fragmentTransaction.commit();
             }
         });
