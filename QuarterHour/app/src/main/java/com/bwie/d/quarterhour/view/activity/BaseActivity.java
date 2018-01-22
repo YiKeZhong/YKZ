@@ -15,6 +15,7 @@ public abstract class BaseActivity<V,T extends BasePresenter<V>> extends Activit
         setContentView(setContentViewId());
         initView();
         initData();
+
         t = initPresenter();
     }
 

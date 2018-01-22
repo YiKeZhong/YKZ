@@ -7,12 +7,9 @@ import com.bwie.d.quarterhour.presenter.BasePresenter;
 
 public class MainActivity extends BaseActivity {
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -23,6 +20,7 @@ public class MainActivity extends BaseActivity {
     @Override
     void initData() {
     //初始化数据
+
     }
 
     @Override
