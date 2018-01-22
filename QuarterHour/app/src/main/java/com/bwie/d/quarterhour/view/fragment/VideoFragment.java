@@ -16,6 +16,7 @@ import com.bwie.d.quarterhour.R;
  */
 
 public class VideoFragment extends Fragment {
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {

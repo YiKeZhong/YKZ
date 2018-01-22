@@ -16,7 +16,7 @@ public class RetrofitUtils {
         if(service==null){
             synchronized (RetrofitUtils.class){
                 Retrofit retrofit = new Retrofit.Builder()
-                        .baseUrl("")
+                        .baseUrl("https://www.zhaoapi.cn")
                         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                         .client(OkHttpUtils.getInstance())
                         .build();
