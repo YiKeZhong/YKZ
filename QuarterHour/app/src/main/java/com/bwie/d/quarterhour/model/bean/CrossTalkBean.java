@@ -204,4 +204,13 @@ public class CrossTalkBean {
             }
         }
     }
+
+    @Override
+    public String toString() {
+        return "CrossTalkBean{" +
+                "msg='" + msg + '\'' +
+                ", code='" + code + '\'' +
+                ", data=" + data +
+                '}';
+    }
 }

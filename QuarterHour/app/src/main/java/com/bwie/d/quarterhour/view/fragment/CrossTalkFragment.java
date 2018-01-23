@@ -4,13 +4,15 @@ package com.bwie.d.quarterhour.view.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bwie.d.quarterhour.R;
 import com.bwie.d.quarterhour.model.bean.CrossTalkBean;
+import com.bwie.d.quarterhour.presenter.CrossTalkPresenter;
 import com.bwie.d.quarterhour.view.IView.CrossTalkCallBack;
 
 
@@ -18,9 +20,11 @@ import com.bwie.d.quarterhour.view.IView.CrossTalkCallBack;
  * Created by weicy on 2018/1/20.
  */
 
-public class CrossTalkFragment extends Fragment implements CrossTalkCallBack {
+public class CrossTalkFragment extends Fragment{
 
-    private RecyclerView recyclerView;
+    //private RecyclerView recyclerView;
+    private CrossTalkPresenter presenter;
+    private TextView textView;
 
 
     @Override
@@ -28,7 +32,9 @@ public class CrossTalkFragment extends Fragment implements CrossTalkCallBack {
         View view = inflater.inflate(R.layout.crosstalkfragment, container, false);
 //https://www.zhaoapi.cn/quarter/getJokes?source=android&appVersion=101&page=10
         //路径
-        recyclerView = view.findViewById(R.id.crossTalk_recycle);
+        //recyclerView = view.findViewById(R.id.crossTalk_recycle);
+
+        textView = view.findViewById(R.id.crossTalk_name);
         return view;
     }
 
@@ -37,11 +43,18 @@ public class CrossTalkFragment extends Fragment implements CrossTalkCallBack {
         super.onActivityCreated(savedInstanceState);
 
 
+        presenter = new CrossTalkPresenter(new CrossTalkCallBack() {
+            @Override
+            public void success(CrossTalkBean crossTalkBean) {
+
+                Toast.makeText(getContext(),crossTalkBean.toString(),Toast.LENGTH_SHORT).show();
+                System.out.println(crossTalkBean);
+                textView.setText(crossTalkBean.toString());
+            }
+        });
+        presenter.CroTalkpresenterget();
+
 
     }
 
-    @Override
-    public void success(CrossTalkBean crossTalkBean) {
-
-    }
 }
