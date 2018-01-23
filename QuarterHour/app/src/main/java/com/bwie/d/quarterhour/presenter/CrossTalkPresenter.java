@@ -1,6 +1,6 @@
 package com.bwie.d.quarterhour.presenter;
 
-import com.bwie.d.quarterhour.model.CrossTalkModel;
+import com.bwie.d.quarterhour.model.http.CrossTalkModel;
 import com.bwie.d.quarterhour.model.bean.CrossTalkBean;
 import com.bwie.d.quarterhour.view.IView.CrossTalkCallBack;
 

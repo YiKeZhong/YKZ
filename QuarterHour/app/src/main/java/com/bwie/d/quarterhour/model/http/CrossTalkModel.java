@@ -1,4 +1,4 @@
-package com.bwie.d.quarterhour.model;
+package com.bwie.d.quarterhour.model.http;
 
 import com.bwie.d.quarterhour.model.bean.CrossTalkBean;
 import com.bwie.d.quarterhour.model.retrofit.APIFactory;
