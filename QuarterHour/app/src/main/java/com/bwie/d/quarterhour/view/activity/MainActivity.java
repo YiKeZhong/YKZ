@@ -15,20 +15,11 @@ import com.bwie.d.quarterhour.view.fragment.Funnyfragment;
 import com.bwie.d.quarterhour.view.fragment.RecommendFragment;
 import com.bwie.d.quarterhour.view.fragment.VideoFragment;
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.bwie.d.quarterhour.utiles.SlideMenu;
-import com.bwie.d.quarterhour.view.fragment.CrossTalkFragment;
-import com.bwie.d.quarterhour.view.fragment.Funnyfragment;
-import com.bwie.d.quarterhour.view.fragment.RecommendFragment;
-import com.bwie.d.quarterhour.view.fragment.VideoFragment;
-import com.facebook.drawee.view.SimpleDraweeView;
+
 
 public class MainActivity extends BaseActivity {
 
-    private Button radio_01;
-    private Button radio_02;
-    private Button radio_03;
-    private Button radio_04;
-    private SlideMenu slideMenu;
+
     private SimpleDraweeView menu_icon;
     private Button radio_01;
     private Button radio_02;
@@ -148,7 +139,7 @@ public class MainActivity extends BaseActivity {
         Uri uri = Uri.parse("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1517015634&di=064833d0a882df2da895b8ad87d2336a&imgtype=jpg&er=1&src=http%3A%2F%2Fimage.tianjimedia.com%2FuploadImages%2F2014%2F289%2F01%2FIGS09651F94M.jpg");
         menu_icon.setImageURI(uri);
     //初始化数据
-        //圆形头像
+        /*//圆形头像
         Uri uri = Uri.parse("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1517015634&di=064833d0a882df2da895b8ad87d2336a&imgtype=jpg&er=1&src=http%3A%2F%2Fimage.tianjimedia.com%2FuploadImages%2F2014%2F289%2F01%2FIGS09651F94M.jpg");
         SimpleDraweeView draweeView = (SimpleDraweeView) findViewById(R.id.my_image_view);
         draweeView.setImageURI(uri);
@@ -221,7 +212,7 @@ public class MainActivity extends BaseActivity {
                 fragmentTransaction.commit();
             }
         });
-
+*/
 
     }
 

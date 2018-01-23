@@ -37,7 +37,7 @@ public class SlideMenu extends FrameLayout {
         mainView = getChildAt(1);
         menuWidth = menuView.getLayoutParams().width;
     }
-    //使Menu也具有滑动功能
+    /*//使Menu也具有滑动功能
     public boolean onInterceptTouchEvent(MotionEvent ev){
         switch (ev.getAction()) {
             case MotionEvent.ACTION_DOWN:
@@ -51,7 +51,7 @@ public class SlideMenu extends FrameLayout {
                 break;
         }
         return super.onInterceptTouchEvent(ev);
-    }
+    }*/
 
     /**
      * s设置两个子view在页面上的布局
