@@ -43,26 +43,7 @@ public class RecommendFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.recommendfragment, container, false);
-       /* recommend_radio_01 = view.findViewById(R.id.recommend_radio_01);
-        recommend_radio_02 = view.findViewById(R.id.recommend_radio_02);
-        recommend_radio_01.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                HotFragment hotFragment = new HotFragment();
-                FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.recommend_frameLayout, hotFragment);
-                fragmentTransaction.commit();
-            }
-        });
-        recommend_radio_02.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AttentionFragment attentionFragment = new AttentionFragment();
-                FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.recommend_frameLayout, attentionFragment);
-                fragmentTransaction.commit();
-            }
-        });*/
+
         tabLayout = (TabLayout) view.findViewById(R.id.tab_layout);
         viewPager = (ViewPager) view.findViewById(R.id.view_pager);
 

@@ -43,5 +43,6 @@ dependencies {
     compile 'com.github.zcweng:switch-button:0.0.3@aar'
     compile 'com.facebook.fresco:fresco:0.12.0'
     compile "com.android.support:design:24.1.1"
+    compile 'com.liaoinstan.springview:library:1.2.6'
 
 }

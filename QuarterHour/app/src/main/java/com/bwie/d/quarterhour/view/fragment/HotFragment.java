@@ -3,6 +3,7 @@ package com.bwie.d.quarterhour.view.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,13 +11,17 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.bwie.d.quarterhour.R;
+import com.liaoinstan.springview.container.DefaultFooter;
+import com.liaoinstan.springview.container.DefaultHeader;
+import com.liaoinstan.springview.widget.SpringView;
 
 /**
  * Created by weicy on 2018/1/22.
  */
 
 public class HotFragment extends Fragment {
-
+    private SpringView Spr;
+    private RecyclerView recyclerView;
     private TextView text_01;
     private String string;
     private View view;
@@ -30,6 +35,27 @@ public class HotFragment extends Fragment {
         Log.e( "onCreateViewstring: ", string+"123123");
         if (string == "全部"){
             view = inflater.inflate(R.layout.hotfragment, container, false);
+            recyclerView = view.findViewById(R.id.recy);
+            Spr = view.findViewById(R.id.Spr);
+            //数据请求
+
+            
+            Spr.setHeader(new DefaultHeader(getActivity()));
+            Spr.setFooter(new DefaultFooter(getActivity()));
+            Spr.setListener(new SpringView.OnFreshListener() {
+                @Override
+                public void onRefresh() {
+                    //下拉刷新
+                    Spr.onFinishFreshAndLoad();
+                }
+                @Override
+                public void onLoadmore() {
+                    //上拉加载
+                    Spr.onFinishFreshAndLoad();
+                }
+            });
+
+
 
         }else if (string == "关注"){
             view = inflater.inflate(R.layout.attentionfragment, container, false);
