@@ -1,4 +1,4 @@
-package com.bwie.d.quarterhour.utiles;
+package com.bwie.d.quarterhour.utils;
 
 import android.app.Application;
 
