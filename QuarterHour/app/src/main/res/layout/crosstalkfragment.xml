@@ -5,6 +5,7 @@
     android:orientation="vertical">
 
     <TextView
+        android:text="李棋文"
         android:id="@+id/crossTalk_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
