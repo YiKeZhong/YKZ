@@ -61,6 +61,7 @@ public class HotFragment extends Fragment implements IAttenView {
     private RecyclerView att_recyclerview;
     private ZLoadingView attentj_loading;
     private TextView atten_loadingtv;
+    private RecyclerView recyclerView;
 
     @Nullable
     @Override
@@ -68,81 +69,91 @@ public class HotFragment extends Fragment implements IAttenView {
 
         Bundle bundle = getArguments();
         string = bundle.getString("name", "热门");
-        Log.e( "onCreateViewstring: ", string+"123123");
-        if (string == "热门"){
-        string = bundle.getString("name", "全部");
         Log.e("onCreateViewstring: ", string + "123123");
-        if (string == "全部") {
-            view = inflater.inflate(R.layout.hotfragment, container, false);
-            RecyclerView recyclerView = view.findViewById(R.id.recy);
-            Spr = view.findViewById(R.id.Spr);
-            //数据请求
-            Spr.setHeader(new DefaultHeader(getActivity()));
-            Spr.setFooter(new DefaultFooter(getActivity()));
-            Spr.setListener(new SpringView.OnFreshListener() {
-                @Override
-                public void onRefresh() {
-                    //下拉刷新
-                    Spr.onFinishFreshAndLoad();
-                }
-
-                @Override
-                public void onLoadmore() {
-                    //上拉加载
-                    Spr.onFinishFreshAndLoad();
-                }
-            });
-            Retrofit retrofit =  new Retrofit.Builder().baseUrl("https://www.zhaoapi.cn")
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build();
-
-            IGetDataBase iGetDataBase = retrofit.create(IGetDataBase.class);
-            Call<HotBean> call = iGetDataBase.get();
-            call.enqueue(new Callback<HotBean>() {
-
-
-
-                @Override
-                public void onResponse(Call<HotBean> call, Response<HotBean> response) {
-                    HotBean body = response.body();
-                    data = body.getData();
-                    if (data!=null){
-                        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));
-                        HotAdapter hotAdapter = new HotAdapter(getActivity(),data);
-                        recyclerView.setAdapter(hotAdapter);
+        if (string == "热门") {
+            string = bundle.getString("name", "热门");
+            Log.e("onCreateViewstring: ", string + "123123");
+            if (string == "热门") {
+                view = inflater.inflate(R.layout.hotfragment, container, false);
+                recyclerView = view.findViewById(R.id.recy);
+                Spr = view.findViewById(R.id.Spr);
+                //数据请求
+                Spr.setHeader(new DefaultHeader(getActivity()));
+                Spr.setFooter(new DefaultFooter(getActivity()));
+                Spr.setListener(new SpringView.OnFreshListener() {
+                    @Override
+                    public void onRefresh() {
+                        //下拉刷新
+                        Spr.onFinishFreshAndLoad();
                     }
 
-                }
+                    @Override
+                    public void onLoadmore() {
+                        //上拉加载
+                        Spr.onFinishFreshAndLoad();
+                    }
+                });
+                Retrofit retrofit = new Retrofit.Builder().baseUrl("https://www.zhaoapi.cn")
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .build();
 
-                @Override
-                public void onFailure(Call<HotBean> call, Throwable t) {
-
-                }
-            });
+                IGetDataBase iGetDataBase = retrofit.create(IGetDataBase.class);
+                Call<HotBean> call = iGetDataBase.get();
+                call.enqueue(new Callback<HotBean>() {
 
 
-            /**
-             * 关注页面
-             */
-        } else if (string == "关注") {
-            view = inflater.inflate(R.layout.attentionfragment, container, false);
-            att_recyclerview = view.findViewById(R.id.att_recyclerview);
-            atten_loadingtv = view.findViewById(R.id.atten_loadingtv);
-            attentj_loading = view.findViewById(R.id.attentj_loading);
-            attentj_loading.setLoadingBuilder(Z_TYPE.INTERTWINE);//设置类型
-            attentj_loading.setColorFilter(Color.BLUE);//设置颜色
+                    @Override
+                    public void onResponse(Call<HotBean> call, Response<HotBean> response) {
+                        HotBean body = response.body();
+                        data = body.getData();
+                        if (data != null) {
+                            recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+                            HotAdapter hotAdapter = new HotAdapter(getActivity(), data);
+                            recyclerView.setAdapter(hotAdapter);
+                        }
 
-            attenTJPresenter = new AttenTJPresenter();
-            attenTJPresenter.attach(this);
-            attenTJPresenter.getData();
+                    }
 
-            att_recyclerview.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
-            att_recyclerview.addItemDecoration(new DividerItemDecoration(getContext(),DividerItemDecoration.VERTICAL));
-            attenRecyAdapter = new AttenRecyAdapter(getActivity());
-            att_recyclerview.setAdapter(attenRecyAdapter);
+                    @Override
+                    public void onFailure(Call<HotBean> call, Throwable t) {
 
+                    }
+                });
+
+
+                /**
+                 * 关注页面
+                 */
+            } else if (string == "关注") {
+                view = inflater.inflate(R.layout.attentionfragment, container, false);
+                att_recyclerview = view.findViewById(R.id.att_recyclerview);
+                atten_loadingtv = view.findViewById(R.id.atten_loadingtv);
+                attentj_loading = view.findViewById(R.id.attentj_loading);
+                attentj_loading.setLoadingBuilder(Z_TYPE.INTERTWINE);//设置类型
+                attentj_loading.setColorFilter(Color.BLUE);//设置颜色
+
+                attenTJPresenter = new AttenTJPresenter();
+                attenTJPresenter.attach(this);
+                attenTJPresenter.getData();
+
+                att_recyclerview.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+                att_recyclerview.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
+                attenRecyAdapter = new AttenRecyAdapter(getActivity());
+                att_recyclerview.setAdapter(attenRecyAdapter);
+
+            }
+            return view;
         }
-        return view;
+        return null;
     }
 
+    @Override
+    public void Successful(AttenTJBean attenTJBean) {
+
+    }
+
+    @Override
+    public void Failed(Disposable d) {
+
+    }
 }
