@@ -90,6 +90,7 @@ public class HotFragment extends Fragment implements IAttenView {
                         Spr.onFinishFreshAndLoad();
                     }
                 });
+                
                 Retrofit retrofit = new Retrofit.Builder().baseUrl("https://www.zhaoapi.cn")
                         .addConverterFactory(GsonConverterFactory.create())
                         .build();
