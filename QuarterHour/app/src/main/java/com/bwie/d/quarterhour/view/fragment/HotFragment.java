@@ -71,9 +71,6 @@ public class HotFragment extends Fragment implements IAttenView {
         string = bundle.getString("name", "热门");
         Log.e("onCreateViewstring: ", string + "123123");
         if (string == "热门") {
-            string = bundle.getString("name", "热门");
-            Log.e("onCreateViewstring: ", string + "123123");
-            if (string == "热门") {
                 view = inflater.inflate(R.layout.hotfragment, container, false);
                 recyclerView = view.findViewById(R.id.recy);
                 Spr = view.findViewById(R.id.Spr);
@@ -144,8 +141,7 @@ public class HotFragment extends Fragment implements IAttenView {
             }
             return view;
         }
-        return null;
-    }
+
 
     @Override
     public void Successful(AttenTJBean attenTJBean) {
