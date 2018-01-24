@@ -21,6 +21,8 @@
         </activity>
         <activity android:name=".view.activity.BaseActivity" />
         <activity android:name=".view.Web.HotWebViewActivity"></activity>
+        <activity android:name=".view.activity.BaseActivity" />
+        <activity android:name=".view.activity.CreateActivity"></activity>
     </application>
 
 </manifest>

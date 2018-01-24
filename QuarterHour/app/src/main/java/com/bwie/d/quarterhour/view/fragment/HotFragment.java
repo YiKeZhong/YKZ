@@ -1,8 +1,11 @@
 package com.bwie.d.quarterhour.view.fragment;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -17,9 +20,23 @@ import com.bwie.d.quarterhour.model.bean.HotBean;
 import com.bwie.d.quarterhour.utils.IGetDataBase;
 import com.bwie.d.quarterhour.view.activity.MainActivity;
 import com.bwie.d.quarterhour.view.adapter.HotAdapter;
+import com.bwie.d.quarterhour.model.bean.AttenTJBean;
+import com.bwie.d.quarterhour.presenter.AttenTJPresenter;
+import com.bwie.d.quarterhour.view.IView.IAttenView;
+import com.bwie.d.quarterhour.view.adapter.AttenRecyAdapter;
+import com.bwie.d.quarterhour.view.adapter.FunnyRecyAdapter;
 import com.liaoinstan.springview.container.DefaultFooter;
 import com.liaoinstan.springview.container.DefaultHeader;
 import com.liaoinstan.springview.widget.SpringView;
+import com.zyao89.view.zloading.ZLoadingView;
+import com.zyao89.view.zloading.Z_TYPE;
+
+import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
+import io.reactivex.disposables.Disposable;
 
 import java.util.List;
 
@@ -33,13 +50,18 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by weicy on 2018/1/22.
  */
 
-public class HotFragment extends Fragment {
+public class HotFragment extends Fragment implements IAttenView {
     private SpringView Spr;
-    private RecyclerView recyclerView;
     private TextView text_01;
     private String string;
     private View view;
     private List<HotBean.DataBean> data;
+    private AttenTJPresenter attenTJPresenter;
+    private AttenRecyAdapter attenRecyAdapter;
+    private RecyclerView att_recyclerview;
+    private ZLoadingView attentj_loading;
+    private TextView atten_loadingtv;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -48,8 +70,11 @@ public class HotFragment extends Fragment {
         string = bundle.getString("name", "热门");
         Log.e( "onCreateViewstring: ", string+"123123");
         if (string == "热门"){
+        string = bundle.getString("name", "全部");
+        Log.e("onCreateViewstring: ", string + "123123");
+        if (string == "全部") {
             view = inflater.inflate(R.layout.hotfragment, container, false);
-            recyclerView = view.findViewById(R.id.recy);
+            RecyclerView recyclerView = view.findViewById(R.id.recy);
             Spr = view.findViewById(R.id.Spr);
             //数据请求
             Spr.setHeader(new DefaultHeader(getActivity()));
@@ -60,6 +85,7 @@ public class HotFragment extends Fragment {
                     //下拉刷新
                     Spr.onFinishFreshAndLoad();
                 }
+
                 @Override
                 public void onLoadmore() {
                     //上拉加载
@@ -95,10 +121,25 @@ public class HotFragment extends Fragment {
             });
 
 
-
-
-        }else if (string == "关注"){
+            /**
+             * 关注页面
+             */
+        } else if (string == "关注") {
             view = inflater.inflate(R.layout.attentionfragment, container, false);
+            att_recyclerview = view.findViewById(R.id.att_recyclerview);
+            atten_loadingtv = view.findViewById(R.id.atten_loadingtv);
+            attentj_loading = view.findViewById(R.id.attentj_loading);
+            attentj_loading.setLoadingBuilder(Z_TYPE.INTERTWINE);//设置类型
+            attentj_loading.setColorFilter(Color.BLUE);//设置颜色
+
+            attenTJPresenter = new AttenTJPresenter();
+            attenTJPresenter.attach(this);
+            attenTJPresenter.getData();
+
+            att_recyclerview.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
+            att_recyclerview.addItemDecoration(new DividerItemDecoration(getContext(),DividerItemDecoration.VERTICAL));
+            attenRecyAdapter = new AttenRecyAdapter(getActivity());
+            att_recyclerview.setAdapter(attenRecyAdapter);
 
         }
         return view;

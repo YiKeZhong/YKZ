@@ -1,5 +1,6 @@
 package com.bwie.d.quarterhour.view.activity;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
@@ -28,6 +29,7 @@ public class MainActivity extends BaseActivity {
     private Button radio_04;
     private SlideMenu slideMenu;
     private TextView textView;
+    private View main_bianji;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,12 +55,15 @@ public class MainActivity extends BaseActivity {
         radio_03 = (Button) findViewById(R.id.radio_03);
         radio_04 = (Button) findViewById(R.id.radio_04);
         textView = findViewById(R.id.text);
+
+        main_bianji = findViewById(R.id.main_bianji);
+
     }
 
     @Override
     void initData() {
         //初始化数据
-
+        initMenu();
         //圆形头像
         Uri uri = Uri.parse("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1517015634&di=064833d0a882df2da895b8ad87d2336a&imgtype=jpg&er=1&src=http%3A%2F%2Fimage.tianjimedia.com%2FuploadImages%2F2014%2F289%2F01%2FIGS09651F94M.jpg");
         SimpleDraweeView draweeView = (SimpleDraweeView) findViewById(R.id.my_image_view);
@@ -136,17 +141,33 @@ public class MainActivity extends BaseActivity {
                 fragmentTransaction.commit();
             }
         });
+
+        /**
+         * 点击编辑按钮跳转到创作页面
+         */
+        main_bianji.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,CreateActivity.class));
+            }
+        });
     }
 
     /**
      * 侧拉菜单的初始化数据
      */
+    public void initMenu(){
+        //圆形头像
+        Uri uri = Uri.parse("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1517015634&di=064833d0a882df2da895b8ad87d2336a&imgtype=jpg&er=1&src=http%3A%2F%2Fimage.tianjimedia.com%2FuploadImages%2F2014%2F289%2F01%2FIGS09651F94M.jpg");
+        menu_icon.setImageURI(uri);
+    }
 
 
     @Override
     int setContentViewId() {
         //指定引用布局
         return R.layout.activity_main;
+
     }
 
     @Override
