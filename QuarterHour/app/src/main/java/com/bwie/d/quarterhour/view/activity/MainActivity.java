@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.bwie.d.quarterhour.R;
 import com.bwie.d.quarterhour.presenter.BasePresenter;
@@ -26,6 +27,7 @@ public class MainActivity extends BaseActivity {
     private Button radio_03;
     private Button radio_04;
     private SlideMenu slideMenu;
+    private TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +52,7 @@ public class MainActivity extends BaseActivity {
         radio_02 = (Button) findViewById(R.id.radio_02);
         radio_03 = (Button) findViewById(R.id.radio_03);
         radio_04 = (Button) findViewById(R.id.radio_04);
+        textView = findViewById(R.id.text);
     }
 
     @Override
@@ -76,6 +79,7 @@ public class MainActivity extends BaseActivity {
         radio_01.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                textView.setText("推荐");
                 RecommendFragment recommendFragment = new RecommendFragment();
                 radio_01.setCompoundDrawablesWithIntrinsicBounds(null, ContextCompat.getDrawable(MainActivity.this, R.drawable.tuijian_02), null, null);
                 radio_02.setCompoundDrawablesWithIntrinsicBounds(null, ContextCompat.getDrawable(MainActivity.this, R.drawable.duanzi_01), null, null);
@@ -90,6 +94,7 @@ public class MainActivity extends BaseActivity {
         radio_02.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                textView.setText("段子");
                 CrossTalkFragment crossTalkFragment = new CrossTalkFragment();
                 radio_01.setCompoundDrawablesWithIntrinsicBounds(null, ContextCompat.getDrawable(MainActivity.this, R.drawable.tuijian_01), null, null);
                 radio_02.setCompoundDrawablesWithIntrinsicBounds(null, ContextCompat.getDrawable(MainActivity.this, R.drawable.duanzi_02), null, null);
@@ -104,6 +109,7 @@ public class MainActivity extends BaseActivity {
         radio_03.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                textView.setText("视频");
                 VideoFragment videoFragment = new VideoFragment();
                 radio_01.setCompoundDrawablesWithIntrinsicBounds(null, ContextCompat.getDrawable(MainActivity.this, R.drawable.tuijian_01), null, null);
                 radio_02.setCompoundDrawablesWithIntrinsicBounds(null, ContextCompat.getDrawable(MainActivity.this, R.drawable.duanzi_01), null, null);
@@ -118,6 +124,7 @@ public class MainActivity extends BaseActivity {
         radio_04.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                textView.setText("趣图");
                 Funnyfragment funnyfragment = new Funnyfragment();
                 VideoFragment videoFragment = new VideoFragment();
                 radio_01.setCompoundDrawablesWithIntrinsicBounds(null, ContextCompat.getDrawable(MainActivity.this, R.drawable.tuijian_01), null, null);

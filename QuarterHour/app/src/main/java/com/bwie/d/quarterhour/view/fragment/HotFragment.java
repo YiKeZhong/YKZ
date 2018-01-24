@@ -3,17 +3,31 @@ package com.bwie.d.quarterhour.view.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bwie.d.quarterhour.R;
+import com.bwie.d.quarterhour.model.bean.HotBean;
+import com.bwie.d.quarterhour.utils.IGetDataBase;
+import com.bwie.d.quarterhour.view.activity.MainActivity;
+import com.bwie.d.quarterhour.view.adapter.HotAdapter;
 import com.liaoinstan.springview.container.DefaultFooter;
 import com.liaoinstan.springview.container.DefaultHeader;
 import com.liaoinstan.springview.widget.SpringView;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by weicy on 2018/1/22.
@@ -25,21 +39,19 @@ public class HotFragment extends Fragment {
     private TextView text_01;
     private String string;
     private View view;
-
+    private List<HotBean.DataBean> data;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         Bundle bundle = getArguments();
-        string = bundle.getString("name", "全部");
+        string = bundle.getString("name", "热门");
         Log.e( "onCreateViewstring: ", string+"123123");
-        if (string == "全部"){
+        if (string == "热门"){
             view = inflater.inflate(R.layout.hotfragment, container, false);
             recyclerView = view.findViewById(R.id.recy);
             Spr = view.findViewById(R.id.Spr);
             //数据请求
-
-            
             Spr.setHeader(new DefaultHeader(getActivity()));
             Spr.setFooter(new DefaultFooter(getActivity()));
             Spr.setListener(new SpringView.OnFreshListener() {
@@ -54,6 +66,34 @@ public class HotFragment extends Fragment {
                     Spr.onFinishFreshAndLoad();
                 }
             });
+            Retrofit retrofit =  new Retrofit.Builder().baseUrl("https://www.zhaoapi.cn")
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+
+            IGetDataBase iGetDataBase = retrofit.create(IGetDataBase.class);
+            Call<HotBean> call = iGetDataBase.get();
+            call.enqueue(new Callback<HotBean>() {
+
+
+
+                @Override
+                public void onResponse(Call<HotBean> call, Response<HotBean> response) {
+                    HotBean body = response.body();
+                    data = body.getData();
+                    if (data!=null){
+                        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));
+                        HotAdapter hotAdapter = new HotAdapter(getActivity(),data);
+                        recyclerView.setAdapter(hotAdapter);
+                    }
+
+                }
+
+                @Override
+                public void onFailure(Call<HotBean> call, Throwable t) {
+
+                }
+            });
+
 
 
 
