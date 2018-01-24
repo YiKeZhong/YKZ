@@ -52,9 +52,9 @@ public class HotFragment extends Fragment implements IAttenView {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         Bundle bundle = getArguments();
-        string = bundle.getString("name", "全部");
+        string = bundle.getString("name", "热门");
         Log.e("onCreateViewstring: ", string + "123123");
-        if (string == "全部") {
+        if (string == "热门") {
             view = inflater.inflate(R.layout.hotfragment, container, false);
             RecyclerView recyclerView = view.findViewById(R.id.recy);
             Spr = view.findViewById(R.id.Spr);
