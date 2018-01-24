@@ -149,11 +149,24 @@ public class HotFragment extends Fragment implements IAttenView {
 
     @Override
     public void Successful(AttenTJBean attenTJBean) {
+        if (attenTJBean.getData()!= null){
+            List<AttenTJBean.DataBean> data = attenTJBean.getData();
+            attenRecyAdapter.addData(data);
+            attenRecyAdapter.notifyDataSetChanged();
 
+            //数据加载成功时,进行隐藏动画
+            attentj_loading.setVisibility(View.GONE);
+            atten_loadingtv.setVisibility(View.GONE);
+        }
     }
 
     @Override
     public void Failed(Disposable d) {
-
     }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        //attenTJPresenter.Detach();
+    }
+
 }
