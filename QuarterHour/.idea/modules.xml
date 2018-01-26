@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/QuarterHour.iml" filepath="$PROJECT_DIR$/QuarterHour.iml" />
+      <module fileurl="file://D:\AndroidStudioProjects\YKZ\YKZ\QuarterHour\QuarterHour.iml" filepath="D:\AndroidStudioProjects\YKZ\YKZ\QuarterHour\QuarterHour.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
