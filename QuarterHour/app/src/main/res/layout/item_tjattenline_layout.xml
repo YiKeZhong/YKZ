@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     xmlns:fresco="http://schemas.android.com/apk/res-auto">
@@ -61,18 +61,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <TextView
             android:id="@+id/tj_atten_tvtheme"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:textSize="18sp"/>
-        <com.facebook.drawee.view.SimpleDraweeView
-            android:id="@+id/tj_atten_simple_bigimg"
+            android:textSize="18sp" />
+        <cn.jzvd.JZVideoPlayerStandard
+            android:id="@+id/tj_atten_video"
             android:layout_width="match_parent"
             android:layout_height="220dp"
             android:layout_marginRight="16dp"
             android:layout_marginLeft="16dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 </LinearLayout>
