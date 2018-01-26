@@ -13,18 +13,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bwie.d.quarterhour.R;
-import com.bwie.d.quarterhour.model.bean.HotBean;
-import com.bwie.d.quarterhour.utils.IGetDataBase;
-import com.bwie.d.quarterhour.view.activity.MainActivity;
-import com.bwie.d.quarterhour.view.adapter.HotAdapter;
 import com.bwie.d.quarterhour.model.bean.AttenTJBean;
+import com.bwie.d.quarterhour.model.bean.HotBean;
 import com.bwie.d.quarterhour.presenter.AttenTJPresenter;
+import com.bwie.d.quarterhour.utils.IGetDataBase;
 import com.bwie.d.quarterhour.view.IView.IAttenView;
 import com.bwie.d.quarterhour.view.adapter.AttenRecyAdapter;
-import com.bwie.d.quarterhour.view.adapter.FunnyRecyAdapter;
+import com.bwie.d.quarterhour.view.adapter.HotAdapter;
 import com.liaoinstan.springview.container.DefaultFooter;
 import com.liaoinstan.springview.container.DefaultHeader;
 import com.liaoinstan.springview.widget.SpringView;
@@ -52,7 +49,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class HotFragment extends Fragment implements IAttenView {
     private SpringView Spr;
-    private TextView text_01;
     private String string;
     private View view;
     private List<HotBean.DataBean> data;
@@ -124,7 +120,9 @@ public class HotFragment extends Fragment implements IAttenView {
                  */
             } else if (string == "关注") {
                 view = inflater.inflate(R.layout.attentionfragment, container, false);
-                att_recyclerview = view.findViewById(R.id.att_recyclerview);
+            //playerView = new PlayerView(getActivity());
+
+            att_recyclerview = view.findViewById(R.id.att_recyclerview);
                 atten_loadingtv = view.findViewById(R.id.atten_loadingtv);
                 attentj_loading = view.findViewById(R.id.attentj_loading);
                 attentj_loading.setLoadingBuilder(Z_TYPE.INTERTWINE);//设置类型
@@ -138,6 +136,8 @@ public class HotFragment extends Fragment implements IAttenView {
                 att_recyclerview.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
                 attenRecyAdapter = new AttenRecyAdapter(getActivity());
                 att_recyclerview.setAdapter(attenRecyAdapter);
+
+
 
             }
             return view;
