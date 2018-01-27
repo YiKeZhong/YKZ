@@ -119,7 +119,6 @@ public class HotAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             ((ViewHolder1) holder).banner.setOnBannerListener(new OnBannerListener() {
                 @Override
                 public void OnBannerClick(int position) {
-                    Toast.makeText(context,""+position,Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(context, HotWebViewActivity.class);
                     if (position==0){
                         String url = list_url.get(position);
