@@ -1,15 +1,18 @@
 package com.bwie.d.quarterhour.view.activity;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import com.bwie.d.quarterhour.R;
 import com.bwie.d.quarterhour.presenter.BasePresenter;
 import com.bwie.d.quarterhour.utils.SlideMenu;
+import com.bwie.d.quarterhour.view.adapter.LoginActivity;
 import com.bwie.d.quarterhour.view.fragment.CrossTalkFragment;
 import com.bwie.d.quarterhour.view.fragment.Funnyfragment;
 import com.bwie.d.quarterhour.view.fragment.RecommendFragment;
@@ -26,6 +29,7 @@ public class MainActivity extends BaseActivity {
     private Button radio_03;
     private Button radio_04;
     private SlideMenu slideMenu;
+    private LinearLayout loginLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +42,7 @@ public class MainActivity extends BaseActivity {
         //初始化控件
         slideMenu = (SlideMenu)findViewById(R.id.slideMenu);
         menu_icon = findViewById(R.id.menu_icon);
+        loginLayout = findViewById(R.id.menu_backgroud);
         //底部
         radio_01 = (Button) findViewById(R.id.radio_01);
         radio_02 = (Button) findViewById(R.id.radio_02);
@@ -127,6 +132,14 @@ public class MainActivity extends BaseActivity {
                 FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.frameLayout, funnyfragment);
                 fragmentTransaction.commit();
+            }
+        });
+
+        loginLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
             }
         });
     }
