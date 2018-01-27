@@ -21,6 +21,7 @@ public class OkHttpUtils {
                                 .writeTimeout(20000, TimeUnit.SECONDS)
                                 .connectTimeout(20000, TimeUnit.SECONDS)
                                 .readTimeout(20000, TimeUnit.SECONDS)
+                                .addInterceptor(new LoggingInterceptor())
                                 .build();
                     }
                 }
