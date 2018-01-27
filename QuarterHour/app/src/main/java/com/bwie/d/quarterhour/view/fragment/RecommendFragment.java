@@ -48,7 +48,7 @@ public class RecommendFragment extends Fragment {
         viewPager = (ViewPager) view.findViewById(R.id.view_pager);
 
         list = new ArrayList<>();
-        list.add("全部");
+        list.add("热门");
         list.add("关注");
         tabLayout.post(new Runnable() {
             @Override
