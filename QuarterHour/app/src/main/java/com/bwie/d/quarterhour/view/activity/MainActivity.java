@@ -8,6 +8,7 @@ import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bwie.d.quarterhour.R;
@@ -59,8 +60,8 @@ public class MainActivity extends BaseActivity {
         radio_03 = (Button) findViewById(R.id.radio_03);
         radio_04 = (Button) findViewById(R.id.radio_04);
         textView = findViewById(R.id.text);
-
         main_bianji = findViewById(R.id.main_bianji);
+
 
     }
 
