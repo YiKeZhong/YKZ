@@ -110,7 +110,6 @@ public class HotFragment extends Fragment implements IAttenView {
                             attentj_loading1.setVisibility(View.GONE);
                             atten_loadingtv1.setVisibility(View.GONE);
                         }
-
                     }
 
                     @Override
@@ -119,14 +118,13 @@ public class HotFragment extends Fragment implements IAttenView {
                     }
                 });
 
-
                 /**
                  * 关注页面
                  */
             } else if (string == "关注") {
                 view = inflater.inflate(R.layout.attentionfragment, container, false);
             //playerView = new PlayerView(getActivity());
-
+            
             att_recyclerview = view.findViewById(R.id.att_recyclerview);
                 atten_loadingtv = view.findViewById(R.id.atten_loadingtv);
                 attentj_loading = view.findViewById(R.id.attentj_loading);
@@ -141,9 +139,6 @@ public class HotFragment extends Fragment implements IAttenView {
                 att_recyclerview.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
                 attenRecyAdapter = new AttenRecyAdapter(getActivity());
                 att_recyclerview.setAdapter(attenRecyAdapter);
-
-
-
             }
             return view;
         }

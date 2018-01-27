@@ -49,7 +49,6 @@ public class HotAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public HotAdapter(Context context, List<HotBean.DataBean> list) {
         this.context=context;
         this.list=list;
-        Log.i("weicy1w",list.get(0).getCover());
     }
 
     @Override
