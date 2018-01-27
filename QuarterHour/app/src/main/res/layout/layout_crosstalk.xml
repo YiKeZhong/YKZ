@@ -1,6 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:layout_weight="0"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            fresco:roundedCornerRadius="50dp"
+            fresco:roundWithOverlayColor="#FFFFFF"
+            fresco:roundingBorderWidth="1dp"
+            fresco:roundingBorderColor="#000000"
+            fresco:placeholderImage="@drawable/cross_toux"/>
+
+        <LinearLayout
+            android:layout_weight="0"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#f00"
+                android:text="天蝎喝牛奶"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2017-05-23  14:25"/>
+        </LinearLayout>
+        
+        <RelativeLayout
+            android:layout_weight="1"
+            android:layout_width="50dp"
+            android:layout_height="50dp">
+
+
+            <ImageView
+                android:id="@+id/timg"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="35dp"
+                android:src="@drawable/cross_toux" />
+            <ImageView
+                android:id="@+id/warning"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="35dp"
+                android:src="@drawable/cross_toux" />
+            <ImageView
+                android:id="@+id/banned"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="35dp"
+                android:src="@drawable/cross_toux" />
+            <TextView
+                android:id="@+id/tv1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/timg"
+                android:visibility="gone"
+                android:layout_marginRight="45dp"
+                android:textSize="20sp"
+                android:text="屏蔽"/>
+            <TextView
+                android:id="@+id/tv2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/warning"
+                android:visibility="gone"
+                android:layout_marginRight="28dp"
+                android:textSize="20sp"
+                android:text="复制链接"/>
+            <TextView
+                android:id="@+id/tv3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:visibility="gone"
+                android:layout_below="@+id/banned"
+                android:layout_marginRight="45dp"
+                android:textSize="20sp"
+                android:text="举报"/>
+
+            <ImageView
+                android:clickable="true"
+                android:id="@+id/img_publish"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="35dp"
+                android:src="@drawable/cross_toux" />
+        </RelativeLayout>
+
+
+        <!--<com.facebook.drawee.view.SimpleDraweeView
+            android:layout_weight="0"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            fresco:roundedCornerRadius="50dp"
+            fresco:roundWithOverlayColor="#FFFFFF"
+            fresco:roundingBorderWidth="1dp"
+            fresco:roundingBorderColor="#000000"
+            fresco:placeholderImage="@drawable/cross_jia"/>-->
+    </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="今天来上班时，同事小李走路有点踉跄！我问：怎么了这是？小李伤感道：菊花被一个老女人搞得好痛！我眉毛一挑：我去，这是发生了什么禁忌活动啊！小李：想什么呢，我就是老干妈吃多了！"/>
+
+
+
+
 
 </LinearLayout>

@@ -5,22 +5,21 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bwie.d.quarterhour.R;
-import com.bwie.d.quarterhour.model.bean.AttenTJBean;
 import com.bwie.d.quarterhour.presenter.BasePresenter;
 import com.bwie.d.quarterhour.utils.SlideMenu;
+import com.bwie.d.quarterhour.view.adapter.LoginActivity;
 import com.bwie.d.quarterhour.view.fragment.CrossTalkFragment;
 import com.bwie.d.quarterhour.view.fragment.Funnyfragment;
 import com.bwie.d.quarterhour.view.fragment.RecommendFragment;
 import com.bwie.d.quarterhour.view.fragment.VideoFragment;
 import com.facebook.drawee.view.SimpleDraweeView;
-
-import java.lang.reflect.Method;
 
 
 public class MainActivity extends BaseActivity {
@@ -34,6 +33,7 @@ public class MainActivity extends BaseActivity {
     private SlideMenu slideMenu;
     private TextView textView;
     private View main_bianji;
+    private LinearLayout loginLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +46,7 @@ public class MainActivity extends BaseActivity {
         //初始化控件
         slideMenu = (SlideMenu)findViewById(R.id.slideMenu);
         menu_icon = findViewById(R.id.menu_icon);
+        loginLayout = findViewById(R.id.menu_backgroud);
         //底部
         radio_01 = (Button) findViewById(R.id.radio_01);
         radio_02 = (Button) findViewById(R.id.radio_02);
@@ -59,8 +60,8 @@ public class MainActivity extends BaseActivity {
         radio_03 = (Button) findViewById(R.id.radio_03);
         radio_04 = (Button) findViewById(R.id.radio_04);
         textView = findViewById(R.id.text);
-
         main_bianji = findViewById(R.id.main_bianji);
+
 
     }
 
@@ -153,6 +154,14 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this,CreateActivity.class));
+            }
+        });
+
+        loginLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
             }
         });
     }

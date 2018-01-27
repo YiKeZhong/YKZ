@@ -56,21 +56,26 @@ public class HotFragment extends Fragment implements IAttenView {
     private AttenRecyAdapter attenRecyAdapter;
     private RecyclerView att_recyclerview;
     private ZLoadingView attentj_loading;
+    private ZLoadingView attentj_loading1;
     private TextView atten_loadingtv;
     private RecyclerView recyclerView;
+    private TextView atten_loadingtv1;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
         Bundle bundle = getArguments();
         string = bundle.getString("name", "热门");
-        Log.e("onCreateViewstring: ", string + "123123");
         if (string == "热门") {
                 view = inflater.inflate(R.layout.hotfragment, container, false);
                 recyclerView = view.findViewById(R.id.recy);
                 Spr = view.findViewById(R.id.Spr);
-                //数据请求
+                //设置数据未加载出的动画
+                atten_loadingtv1 = view.findViewById(R.id.atten_loadingtv1);
+                attentj_loading1 = view.findViewById(R.id.attentj_loading1);
+                attentj_loading1.setLoadingBuilder(Z_TYPE.INTERTWINE);//设置类型
+                attentj_loading1.setColorFilter(Color.BLUE);//设置颜色
+                //上拉下拉刷新数据
                 Spr.setHeader(new DefaultHeader(getActivity()));
                 Spr.setFooter(new DefaultFooter(getActivity()));
                 Spr.setListener(new SpringView.OnFreshListener() {
@@ -79,23 +84,19 @@ public class HotFragment extends Fragment implements IAttenView {
                         //下拉刷新
                         Spr.onFinishFreshAndLoad();
                     }
-
                     @Override
                     public void onLoadmore() {
                         //上拉加载
                         Spr.onFinishFreshAndLoad();
                     }
                 });
-                
+                //数据请求
                 Retrofit retrofit = new Retrofit.Builder().baseUrl("https://www.zhaoapi.cn")
                         .addConverterFactory(GsonConverterFactory.create())
                         .build();
-
                 IGetDataBase iGetDataBase = retrofit.create(IGetDataBase.class);
                 Call<HotBean> call = iGetDataBase.get();
                 call.enqueue(new Callback<HotBean>() {
-
-
                     @Override
                     public void onResponse(Call<HotBean> call, Response<HotBean> response) {
                         HotBean body = response.body();
@@ -104,8 +105,11 @@ public class HotFragment extends Fragment implements IAttenView {
                             recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
                             HotAdapter hotAdapter = new HotAdapter(getActivity(), data);
                             recyclerView.setAdapter(hotAdapter);
+                            hotAdapter.notifyDataSetChanged();
+                            //数据加载成功时,进行隐藏动画
+                            attentj_loading1.setVisibility(View.GONE);
+                            atten_loadingtv1.setVisibility(View.GONE);
                         }
-
                     }
 
                     @Override
@@ -114,14 +118,13 @@ public class HotFragment extends Fragment implements IAttenView {
                     }
                 });
 
-
                 /**
                  * 关注页面
                  */
             } else if (string == "关注") {
                 view = inflater.inflate(R.layout.attentionfragment, container, false);
             //playerView = new PlayerView(getActivity());
-
+            
             att_recyclerview = view.findViewById(R.id.att_recyclerview);
                 atten_loadingtv = view.findViewById(R.id.atten_loadingtv);
                 attentj_loading = view.findViewById(R.id.attentj_loading);
@@ -136,9 +139,6 @@ public class HotFragment extends Fragment implements IAttenView {
                 att_recyclerview.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
                 attenRecyAdapter = new AttenRecyAdapter(getActivity());
                 att_recyclerview.setAdapter(attenRecyAdapter);
-
-
-
             }
             return view;
         }
