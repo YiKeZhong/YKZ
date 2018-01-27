@@ -15,6 +15,6 @@ public interface IGetDataBase {
      * @param key
      * @return
      */
-    @GET("/quarter/getAd")
+    @GET("/quarter/getVideos?type=1&page=1&source=android&appVersion=101")
     Call<HotBean> get();
 }
