@@ -110,7 +110,6 @@ public class HotFragment extends Fragment implements IAttenView {
                             attentj_loading1.setVisibility(View.GONE);
                             atten_loadingtv1.setVisibility(View.GONE);
                         }
-
                     }
 
                     @Override
