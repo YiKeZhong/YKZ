@@ -51,10 +51,13 @@ public class VideoHotFragment extends Fragment implements VideoViewCallBack {
     @Override
     public void getSuccess(VideoBean bean) {
         List<VideoBean.DataBean> list = bean.getData();
-        reciclerHot.setLayoutManager(new StaggeredGridLayoutManager(2, LinearLayout.VERTICAL));
-        //reciclerVideo.setLayoutManager(new LinearLayoutManager(getActivity()));
-        VideoRecyclerViewAdapter adapter = new VideoRecyclerViewAdapter(getActivity(), list);
-        reciclerHot.setAdapter(adapter);
+        if (list!=null){
+            reciclerHot.setLayoutManager(new StaggeredGridLayoutManager(2, LinearLayout.VERTICAL));
+            //reciclerVideo.setLayoutManager(new LinearLayoutManager(getActivity()));
+            VideoRecyclerViewAdapter adapter = new VideoRecyclerViewAdapter(getActivity(), list);
+            reciclerHot.setAdapter(adapter);
+        }
+
     }
 
     @Override
