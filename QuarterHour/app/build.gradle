@@ -54,4 +54,5 @@ dependencies {
     compile 'com.zyao89:zloading:1.0.8'
     compile 'cn.jzvd:jiaozivideoplayer:6.2.7'
     compile 'com.cpacm:floatingmusicmenu:1.0.0'
+
 }
