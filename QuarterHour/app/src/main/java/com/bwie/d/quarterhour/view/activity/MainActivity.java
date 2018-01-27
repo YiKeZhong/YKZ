@@ -5,14 +5,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bwie.d.quarterhour.R;
-import com.bwie.d.quarterhour.model.bean.AttenTJBean;
 import com.bwie.d.quarterhour.presenter.BasePresenter;
 import com.bwie.d.quarterhour.utils.SlideMenu;
 import com.bwie.d.quarterhour.view.adapter.LoginActivity;
@@ -21,8 +19,6 @@ import com.bwie.d.quarterhour.view.fragment.Funnyfragment;
 import com.bwie.d.quarterhour.view.fragment.RecommendFragment;
 import com.bwie.d.quarterhour.view.fragment.VideoFragment;
 import com.facebook.drawee.view.SimpleDraweeView;
-
-import java.lang.reflect.Method;
 
 
 public class MainActivity extends BaseActivity {
