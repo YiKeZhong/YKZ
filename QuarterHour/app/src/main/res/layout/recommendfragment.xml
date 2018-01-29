@@ -7,47 +7,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-  <!--  <RadioGroup
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal"
-        >
-        <View
-
-            android:layout_width="50dp"
-            android:layout_height="50dp"/>
-        <RadioButton
-            android:id="@+id/recommend_radio_01"
-            android:textColor="@color/color_radiobutton"
-            android:gravity="center"
-            android:text="热门"
-
-            android:button="@null"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="50dp" />
-
-        <RadioButton
-            android:id="@+id/recommend_radio_02"
-            android:textColor="@color/color_radiobutton"
-            android:gravity="center"
-            android:text="关注"
-            android:button="@null"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="50dp" />
-        <View
-
-            android:layout_width="50dp"
-            android:layout_height="50dp"/>
-    </RadioGroup>
-    <FrameLayout
-        android:id="@+id/recommend_frameLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentTop="true">
-    </FrameLayout>-->
-
   <android.support.design.widget.TabLayout
       android:id="@+id/tab_layout"
       android:layout_width="match_parent"
