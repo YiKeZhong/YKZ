@@ -2,4 +2,5 @@
     <string name="app_name">QuarterHour</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_login_in">LoginInActivity</string>
+    <string name="crosstalk_edit">分享新鲜事...</string>
 </resources>

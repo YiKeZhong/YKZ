@@ -32,4 +32,10 @@ public class VideoPresenter extends BasePresenter<VideoViewCallBack> {
             }
         });
     }
+
+    public void detachView() {//解除关联
+        if (videoModel != null) {
+            videoModel = null;
+        }
+    }
 }

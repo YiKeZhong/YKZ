@@ -125,8 +125,6 @@ public class AttenRecyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         TextView tjAttenTvname;
         @BindView(R.id.tj_atten_tvtime)
         TextView tjAttenTvtime;
-        @BindView(R.id.tj_atten_imgjia)
-        ImageView tjAttenImgjia;
         @BindView(R.id.tj_atten_tvtheme)
         TextView tjAttenTvtheme;
         @BindView(R.id.tj_atten_video)

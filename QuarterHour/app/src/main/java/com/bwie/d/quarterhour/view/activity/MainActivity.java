@@ -178,15 +178,6 @@ public class MainActivity extends BaseActivity implements ThemeManager.OnThemeCh
                 startActivity(intent);
             }
         });
-
-        switchButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ThemeManager.setThemeMode(ThemeManager.getThemeMode() == ThemeManager.ThemeMode.DAY
-                        ? ThemeManager.ThemeMode.NIGHT : ThemeManager.ThemeMode.DAY);
-            }
-        });
-
     }
 
     /**
@@ -196,13 +187,6 @@ public class MainActivity extends BaseActivity implements ThemeManager.OnThemeCh
         //圆形头像
         Uri uri = Uri.parse("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1517015634&di=064833d0a882df2da895b8ad87d2336a&imgtype=jpg&er=1&src=http%3A%2F%2Fimage.tianjimedia.com%2FuploadImages%2F2014%2F289%2F01%2FIGS09651F94M.jpg");
         menu_icon.setImageURI(uri);
-    }
-    @Subscribe(sticky = true)
-    public void getLoginM(LoginqqBean loginqqBean){
-        Toast.makeText(MainActivity.this,"你好"+loginqqBean.getUsername(),Toast.LENGTH_SHORT).show();
-        login_wm.setText(loginqqBean.getUsername());
-        draweeView.setImageURI(loginqqBean.getUsertx());
-        menu_icon.setImageURI(loginqqBean.getUsertx());
     }
 
 
@@ -217,30 +201,5 @@ public class MainActivity extends BaseActivity implements ThemeManager.OnThemeCh
     public BasePresenter initPresenter() {
         //初始化Presenter
         return null;
-    }
-
-    @Override
-    public void onThemeChanged() {
-        initTheme();
-    }
-
-    private void initTheme() {
-        textView.setTextColor(getResources().getColor(ThemeManager.getCurrentThemeRes(MainActivity.this, R.color.textColor)));
-        //btn_theme.setTextColor(getResources().getColor(ThemeManager.getCurrentThemeRes(MainActivity.this, R.color.textColor)));
-        slideMenu.setBackgroundColor(getResources().getColor(ThemeManager.getCurrentThemeRes(MainActivity.this, R.color.backgroundColor)));
-        // 设置标题栏颜色
-        if(loginLayout != null){
-            loginLayout.setBackgroundDrawable(new ColorDrawable(getResources().getColor(ThemeManager.getCurrentThemeRes(MainActivity.this, R.color.colorPrimary))));
-        }
-        // 设置状态栏颜色
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.setStatusBarColor(getResources().getColor(ThemeManager.getCurrentThemeRes(MainActivity.this, R.color.colorPrimary)));
-        }
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
     }
 }

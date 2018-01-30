@@ -66,10 +66,12 @@ public class HotFragment extends Fragment implements IAttenView {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         Bundle bundle = getArguments();
         string = bundle.getString("name", "热门");
+
         if (string == "热门") {
                 view = inflater.inflate(R.layout.hotfragment, container, false);
                 recyclerView = view.findViewById(R.id.recy);
                 Spr = view.findViewById(R.id.Spr);
+                Log.e( "onCreawe45teView: ","443333" );
                 //设置数据未加载出的动画
                 atten_loadingtv1 = view.findViewById(R.id.atten_loadingtv1);
                 attentj_loading1 = view.findViewById(R.id.attentj_loading1);
@@ -90,34 +92,35 @@ public class HotFragment extends Fragment implements IAttenView {
                         Spr.onFinishFreshAndLoad();
                     }
                 });
-                //数据请求
-                Retrofit retrofit = new Retrofit.Builder().baseUrl("https://www.zhaoapi.cn")
-                        .addConverterFactory(GsonConverterFactory.create())
-                        .build();
-                IGetDataBase iGetDataBase = retrofit.create(IGetDataBase.class);
-                Call<HotBean> call = iGetDataBase.get();
-                call.enqueue(new Callback<HotBean>() {
-                    @Override
-                    public void onResponse(Call<HotBean> call, Response<HotBean> response) {
-                        HotBean body = response.body();
-                        data = body.getData();
-                        if (data != null) {
-                            recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-                            HotAdapter hotAdapter = new HotAdapter(getActivity(), data);
-                            recyclerView.setAdapter(hotAdapter);
-                            hotAdapter.notifyDataSetChanged();
-                            //数据加载成功时,进行隐藏动画
-                            attentj_loading1.setVisibility(View.GONE);
-                            atten_loadingtv1.setVisibility(View.GONE);
-                        }
 
+            //数据请求
+            Retrofit retrofit = new Retrofit.Builder().baseUrl("https://www.zhaoapi.cn")
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+            IGetDataBase iGetDataBase = retrofit.create(IGetDataBase.class);
+            Call<HotBean> call = iGetDataBase.get();
+            call.enqueue(new Callback<HotBean>() {
+                @Override
+                public void onResponse(Call<HotBean> call, Response<HotBean> response) {
+                    HotBean body = response.body();
+                    data = body.getData();
+                    if (data != null) {
+                        Log.e( "onCreatedaView: ","123"+data.get(0).getCreateTime() );
+                        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+                        HotAdapter hotAdapter = new HotAdapter(getActivity(), data);
+                        recyclerView.setAdapter(hotAdapter);
+                        hotAdapter.notifyDataSetChanged();
+                        //数据加载成功时,进行隐藏动画
+                        attentj_loading1.setVisibility(View.GONE);
+                        atten_loadingtv1.setVisibility(View.GONE);
                     }
+                }
 
-                    @Override
-                    public void onFailure(Call<HotBean> call, Throwable t) {
-
-                    }
-                });
+                @Override
+                public void onFailure(Call<HotBean> call, Throwable t) {
+                    Log.e( "onFailureshibai: ","123"+t );
+                }
+            });
 
 
                 /**
@@ -126,7 +129,7 @@ public class HotFragment extends Fragment implements IAttenView {
             } else if (string == "关注") {
                 view = inflater.inflate(R.layout.attentionfragment, container, false);
             //playerView = new PlayerView(getActivity());
-
+            
             att_recyclerview = view.findViewById(R.id.att_recyclerview);
                 atten_loadingtv = view.findViewById(R.id.atten_loadingtv);
                 attentj_loading = view.findViewById(R.id.attentj_loading);
@@ -141,9 +144,6 @@ public class HotFragment extends Fragment implements IAttenView {
                 att_recyclerview.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
                 attenRecyAdapter = new AttenRecyAdapter(getActivity());
                 att_recyclerview.setAdapter(attenRecyAdapter);
-
-
-
             }
             return view;
         }
