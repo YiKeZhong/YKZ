@@ -30,7 +30,7 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 
-public class MainActivity extends BaseActivity implements ThemeManager.OnThemeChangeListener{
+public class MainActivity extends BaseActivity{
 
 
     private SimpleDraweeView menu_icon;
@@ -81,8 +81,8 @@ public class MainActivity extends BaseActivity implements ThemeManager.OnThemeCh
     void initData() {
         //初始化数据
         initMenu();
-        ThemeManager.registerThemeChangeListener(this);
-        EventBus.getDefault().register(this);
+        //ThemeManager.registerThemeChangeListener(this);
+        //EventBus.getDefault().register(this);
         //圆形头像
         Uri uri = Uri.parse("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1517015634&di=064833d0a882df2da895b8ad87d2336a&imgtype=jpg&er=1&src=http%3A%2F%2Fimage.tianjimedia.com%2FuploadImages%2F2014%2F289%2F01%2FIGS09651F94M.jpg");
         draweeView = (SimpleDraweeView) findViewById(R.id.my_image_view);
@@ -202,4 +202,5 @@ public class MainActivity extends BaseActivity implements ThemeManager.OnThemeCh
         //初始化Presenter
         return null;
     }
+
 }
