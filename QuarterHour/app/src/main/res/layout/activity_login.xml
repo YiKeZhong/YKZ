@@ -8,8 +8,6 @@
     android:background="@drawable/login_bg"
     android:orientation="vertical">
 
-
-
     <ImageView
         android:id="@+id/login_touxiang"
         android:layout_width="100dp"
@@ -27,8 +25,7 @@
         android:layout_height="wrap_content"
         android:hint="微信登录"
         android:background="@drawable/edit_bg"
-        android:gravity="center_horizontal"
-        />
+        android:gravity="center_horizontal"/>
 
     <Button
         android:id="@+id/login_qqin"

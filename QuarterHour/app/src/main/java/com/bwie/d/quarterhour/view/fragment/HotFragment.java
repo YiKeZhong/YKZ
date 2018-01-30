@@ -60,6 +60,7 @@ public class HotFragment extends Fragment implements IAttenView {
     private TextView atten_loadingtv;
     private RecyclerView recyclerView;
     private TextView atten_loadingtv1;
+    private SpringView attentj_springview;
 
     @Nullable
     @Override
@@ -131,19 +132,37 @@ public class HotFragment extends Fragment implements IAttenView {
             //playerView = new PlayerView(getActivity());
             
             att_recyclerview = view.findViewById(R.id.att_recyclerview);
-                atten_loadingtv = view.findViewById(R.id.atten_loadingtv);
-                attentj_loading = view.findViewById(R.id.attentj_loading);
-                attentj_loading.setLoadingBuilder(Z_TYPE.INTERTWINE);//设置类型
-                attentj_loading.setColorFilter(Color.BLUE);//设置颜色
+            atten_loadingtv = view.findViewById(R.id.atten_loadingtv);
+            attentj_loading = view.findViewById(R.id.attentj_loading);
+            attentj_springview = view.findViewById(R.id.attentj_springview);
 
-                attenTJPresenter = new AttenTJPresenter();
-                attenTJPresenter.attach(this);
-                attenTJPresenter.getData();
+            attentj_loading.setLoadingBuilder(Z_TYPE.INTERTWINE);//设置类型
+            attentj_loading.setColorFilter(Color.BLUE);//设置颜色
 
-                att_recyclerview.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-                att_recyclerview.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
-                attenRecyAdapter = new AttenRecyAdapter(getActivity());
-                att_recyclerview.setAdapter(attenRecyAdapter);
+            attenTJPresenter = new AttenTJPresenter();
+            attenTJPresenter.attach(this);
+            attenTJPresenter.getData();
+
+            att_recyclerview.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+            att_recyclerview.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
+            attenRecyAdapter = new AttenRecyAdapter(getActivity());
+            att_recyclerview.setAdapter(attenRecyAdapter);
+
+            attentj_springview.setHeader(new DefaultHeader(getContext()));
+            attentj_springview.setFooter(new DefaultFooter(getContext()));
+            attentj_springview.setListener(new SpringView.OnFreshListener() {
+                @Override
+                public void onRefresh() {
+
+                    attentj_springview.onFinishFreshAndLoad();//停止刷新
+                }
+
+                @Override
+                public void onLoadmore() {
+
+                    attentj_springview.onFinishFreshAndLoad();//停止加载
+                }
+            });
             }
             return view;
         }
