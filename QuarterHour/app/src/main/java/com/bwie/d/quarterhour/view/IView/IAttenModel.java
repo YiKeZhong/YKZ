@@ -1,4 +1,4 @@
-package com.bwie.d.quarterhour.model.Imodel;
+package com.bwie.d.quarterhour.view.IView;
 
 import com.bwie.d.quarterhour.model.bean.AttenTJBean;
 

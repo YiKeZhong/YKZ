@@ -1,12 +1,9 @@
 package com.bwie.d.quarterhour.presenter;
 
-import android.support.v4.app.FragmentActivity;
-
-import com.bwie.d.quarterhour.model.Imodel.IAttenModel;
+import com.bwie.d.quarterhour.view.IView.IAttenModel;
 import com.bwie.d.quarterhour.model.bean.AttenTJBean;
-import com.bwie.d.quarterhour.model.http.AttenTJModel;
+import com.bwie.d.quarterhour.model.Imodel.AttenTJModel;
 import com.bwie.d.quarterhour.view.IView.IAttenView;
-import com.bwie.d.quarterhour.view.fragment.HotFragment;
 
 import io.reactivex.disposables.Disposable;
 

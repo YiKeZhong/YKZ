@@ -1,28 +1,36 @@
 package com.bwie.d.quarterhour.view.activity;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bwie.d.quarterhour.R;
+import com.bwie.d.quarterhour.model.bean.LoginqqBean;
 import com.bwie.d.quarterhour.presenter.BasePresenter;
 import com.bwie.d.quarterhour.utils.SlideMenu;
-import com.bwie.d.quarterhour.view.adapter.LoginActivity;
+import com.bwie.d.quarterhour.utils.ThemeManager;
 import com.bwie.d.quarterhour.view.fragment.CrossTalkFragment;
 import com.bwie.d.quarterhour.view.fragment.Funnyfragment;
 import com.bwie.d.quarterhour.view.fragment.RecommendFragment;
 import com.bwie.d.quarterhour.view.fragment.VideoFragment;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.suke.widget.SwitchButton;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements ThemeManager.OnThemeChangeListener{
 
 
     private SimpleDraweeView menu_icon;
@@ -34,6 +42,9 @@ public class MainActivity extends BaseActivity {
     private TextView textView;
     private View main_bianji;
     private LinearLayout loginLayout;
+    private SwitchButton switchButton;
+    private TextView login_wm;
+    private SimpleDraweeView draweeView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +72,8 @@ public class MainActivity extends BaseActivity {
         radio_04 = (Button) findViewById(R.id.radio_04);
         textView = findViewById(R.id.text);
         main_bianji = findViewById(R.id.main_bianji);
-
+        switchButton = findViewById(R.id.switch_button);
+        login_wm = findViewById(R.id.login_wm);
 
     }
 
@@ -69,9 +81,11 @@ public class MainActivity extends BaseActivity {
     void initData() {
         //初始化数据
         initMenu();
+        ThemeManager.registerThemeChangeListener(this);
+        EventBus.getDefault().register(this);
         //圆形头像
         Uri uri = Uri.parse("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1517015634&di=064833d0a882df2da895b8ad87d2336a&imgtype=jpg&er=1&src=http%3A%2F%2Fimage.tianjimedia.com%2FuploadImages%2F2014%2F289%2F01%2FIGS09651F94M.jpg");
-        SimpleDraweeView draweeView = (SimpleDraweeView) findViewById(R.id.my_image_view);
+        draweeView = (SimpleDraweeView) findViewById(R.id.my_image_view);
         draweeView.setImageURI(uri);
         //点击出侧拉
         draweeView.setOnClickListener(new View.OnClickListener() {

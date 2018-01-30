@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bwie.d.quarterhour.R;
@@ -42,13 +41,14 @@ public class HotAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     ArrayList<String> list_url = new ArrayList<>();
     private final static int TYPE_IMAGE = 0;
     private final static int TYPE_Line = 1;
-
+    private boolean ADD=true;
 
     Context context;
     List<HotBean.DataBean> list;
     public HotAdapter(Context context, List<HotBean.DataBean> list) {
         this.context=context;
         this.list=list;
+
     }
 
     @Override
@@ -81,20 +81,24 @@ public class HotAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        list_path.add("https://www.zhaoapi.cn/images/quarter/ad1.png");
-        list_path.add("https://www.zhaoapi.cn/images/quarter/ad2.png");
-        list_path.add("https://www.zhaoapi.cn/images/quarter/ad3.png");
-        list_path.add("https://www.zhaoapi.cn/images/quarter/ad4.png");
-        list_title.add("第十三界瑞丽模特大赛");
-        list_title.add("文化艺术节");
-        list_title.add("直播封面标准");
-        list_title.add("人气谁最高，金主谁最豪气");
-        list_url.add("http://m.mv14449315.icoc.bz/index.jsp");
-        list_url.add("http://m.mv14449315.icoc.bz/index.jsp");
-        list_url.add("http://m.mv14449315.icoc.bz/index.jsp");
-        list_url.add("http://m.mv14449315.icoc.bz/index.jsp");
+
         if (holder instanceof ViewHolder1){
 
+            if (ADD){
+              list_path.add("https://www.zhaoapi.cn/images/quarter/ad1.png");
+              list_path.add("https://www.zhaoapi.cn/images/quarter/ad2.png");
+              list_path.add("https://www.zhaoapi.cn/images/quarter/ad3.png");
+              list_path.add("https://www.zhaoapi.cn/images/quarter/ad4.png");
+              list_title.add("第十三界瑞丽模特大赛");
+              list_title.add("文化艺术节");
+              list_title.add("直播封面标准");
+              list_title.add("人气谁最高，金主谁最豪气");
+              list_url.add("http://m.mv14449315.icoc.bz/index.jsp");
+              list_url.add("http://m.mv14449315.icoc.bz/index.jsp");
+              list_url.add("http://m.mv14449315.icoc.bz/index.jsp");
+              list_url.add("http://m.mv14449315.icoc.bz/index.jsp");
+              ADD=false;
+          }
 //设置内置样式，共有六种可以点入方法内逐一体验使用。
             ((ViewHolder1) holder).banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE);
             //设置图片加载器，图片加载器在下方

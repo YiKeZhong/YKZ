@@ -95,5 +95,7 @@ dependencies {
     compile 'com.liaoinstan.springview:library:1.3.0'
     compile 'com.zyao89:zloading:1.0.8'
     compile 'cn.jzvd:jiaozivideoplayer:6.2.7'
+    implementation files('libs/mta-sdk-1.6.2.jar')
+    implementation files('libs/open_sdk_r5793.jar')
     compile 'com.cpacm:floatingmusicmenu:1.0.0'
 }

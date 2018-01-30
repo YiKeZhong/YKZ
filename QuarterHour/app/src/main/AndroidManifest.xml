@@ -3,13 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.bwie.d.quarterhour">
 
+    <!-- QQ登录授权所需权限 -->
     <uses-permission android:name="android.permission.INTERNET" />
-
-
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name=".utils.MyApplication"
@@ -20,7 +22,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.activity.MainActivity"
+        <activity
+            android:name=".view.activity.MainActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -30,13 +33,40 @@
             </intent-filter>
         </activity>
         <activity android:name=".view.activity.BaseActivity" />
-        <activity android:name=".view.Web.HotWebViewActivity"/>
-        <activity android:name=".view.activity.CreateActivity"/>
+        <activity android:name=".view.Web.HotWebViewActivity" />
+        <activity android:name=".view.activity.CreateActivity" />
+        <activity android:name=".view.Web.HotWebViewActivity" />
+        <activity android:name=".view.activity.CreateActivity" />
         <activity android:name=".view.activity.BaseActivity" />
         <activity
-            android:name=".view.adapter.LoginActivity"
+            android:name=".view.activity.LoginActivity"
             android:label="@string/title_activity_login"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+
+        <!-- 注册SDKActivity -->
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="tencent1105602574" /> <!-- 开放平台获取的APPID -->
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.tencent.connect.common.AssistActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name=".view.activity.LoginInActivity"
+            android:label="@string/title_activity_login_in"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".view.activity.VideoActivity" />
+        <activity android:name=".view.activity.CrossTalkActivity"></activity>
     </application>
 
 </manifest>

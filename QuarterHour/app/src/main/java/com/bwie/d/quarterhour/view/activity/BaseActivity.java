@@ -17,7 +17,7 @@ public abstract class BaseActivity<V,T extends BasePresenter<V>> extends Fragmen
         initView();
         initData();
 
-        t = initPresenter();
+        //t = initPresenter();
     }
 
     /*@Override
