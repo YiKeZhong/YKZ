@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bwie.d.quarterhour.R;
@@ -22,6 +23,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.jzvd.JZVideoPlayer;
 import cn.jzvd.JZVideoPlayerStandard;
+import cn.sharesdk.onekeyshare.OnekeyShare;
+
+import static com.mob.tools.utils.Strings.getString;
 
 /**
  * Created by ztz on 2018/1/23.
@@ -74,7 +78,7 @@ public class AttenRecyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(final RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int position) {
         String img_url = "https://v2.modao.cc/uploads3/images/1103/11038871/raw_1500002643.png";
         if (holder instanceof imgViewHolder) {
             ((imgViewHolder) holder).tjAttensimpleDrawee.setImageURI(img_url);
@@ -88,10 +92,48 @@ public class AttenRecyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             ((lineViewHolder) holder).tjAttenSimpleDraweeIcon.setImageURI(user_icon);
             ((lineViewHolder) holder).tjAttenTvtheme.setText(list.get(position).getWorkDesc());
             //进行播放视频
-            ((lineViewHolder) holder).tjattenvideo.setUp(vidoe_url,JZVideoPlayerStandard.SCREEN_WINDOW_NORMAL,"");
+            ((lineViewHolder) holder).tjattenvideo.setUp(vidoe_url, JZVideoPlayerStandard.SCREEN_WINDOW_NORMAL, "");
             Glide.with(context).load(big_img).into(((lineViewHolder) holder).tjattenvideo.thumbImageView);
 
+            ((lineViewHolder) holder).attentjzan.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(context,"we",Toast.LENGTH_SHORT).show();
+                    //((lineViewHolder) holder).attentjzan.setImageResource(R.drawable.hong_xin);
+                }
+            });
+            //点击进行分享
+            ((lineViewHolder) holder).attentjshare.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    showShare();
+                    OnekeyShare oks = new OnekeyShare();
+                    //关闭sso授权
+                    oks.disableSSOWhenAuthorize();
+                    // title标题，微信、QQ和QQ空间等平台使用
+                    oks.setTitle(getString(R.string.app_name));
+                    // titleUrl QQ和QQ空间跳转链接
+                    oks.setTitleUrl("http://www.baidu.com");
+                    // text是分享文本，所有平台都需要这个字段
+                    oks.setText("我是分享文本");
+                    // imagePath是图片的本地路径，Linked-In以外的平台都支持此参数
+                    oks.setImagePath("https://ss0.bdstatic.com/6ONWsjip0QIZ8tyhnq/it/u=1618097094,4154452434&fm=77&w_h=121_75&cs=423647557,799948659");//确保SDcard下面存在此张图片
+                    // url在微信、微博，Facebook等平台中使用
+                    oks.setUrl("http://www.baidu.com");
+                    // comment是我对这条分享的评论，仅在人人网使用
+                    //oks.setComment("我是测试评论文本");
+                    // 启动分享GUI
+                    oks.show(context);
+                }
+            });
         }
+    }
+
+    /**
+     * 分享
+     */
+    private void showShare() {
+
     }
 
     /**
@@ -100,7 +142,6 @@ public class AttenRecyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     public void stop() {
         JZVideoPlayer.releaseAllVideos();
     }
-
 
 
     @Override
@@ -129,6 +170,11 @@ public class AttenRecyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         TextView tjAttenTvtheme;
         @BindView(R.id.tj_atten_video)
         JZVideoPlayerStandard tjattenvideo;
+        @BindView(R.id.attentj_zan)
+        ImageView attentjzan;
+        @BindView(R.id.attentj_share)
+        ImageView attentjshare;
+
         lineViewHolder(View view) {
             super(view);
             ButterKnife.bind(this, view);
