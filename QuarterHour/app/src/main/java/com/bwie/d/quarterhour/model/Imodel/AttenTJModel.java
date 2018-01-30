@@ -1,13 +1,9 @@
-package com.bwie.d.quarterhour.model.http;
+package com.bwie.d.quarterhour.model.Imodel;
 
-import android.util.Log;
-
-import com.bwie.d.quarterhour.model.Imodel.IAttenModel;
+import com.bwie.d.quarterhour.view.IView.IAttenModel;
 import com.bwie.d.quarterhour.model.bean.AttenTJBean;
 import com.bwie.d.quarterhour.model.retrofit.AbstractObserver;
 import com.bwie.d.quarterhour.model.retrofit.RetrofitUtils;
-import com.bwie.d.quarterhour.presenter.AttenTJPresenter;
-import com.facebook.drawee.backends.pipeline.Fresco;
 
 import java.util.HashMap;
 

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.bwie.d.quarterhour.view.activity.LoginInActivity"
+    >
+
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@mipmap/ic_launcher"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="注册账号"
+        android:layout_alignParentRight="true"
+        android:layout_margin="20dp"/>
+
+    <ImageView
+        android:id="@+id/loginin_touxiang"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/touxiang"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"/>
+
+    <EditText
+        android:id="@+id/Login_user"
+        android:layout_below="@+id/loginin_touxiang"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:hint="请输入账号"
+        android:layout_marginTop="40dp"
+        android:layout_centerHorizontal="true"/>
+
+    <EditText
+        android:id="@+id/Login_pass"
+        android:layout_below="@+id/Login_user"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:hint="请输入账号"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:id="@+id/login_deng"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Login_pass"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="登录"/>
+
+
+</RelativeLayout>
