@@ -28,10 +28,6 @@
         <activity android:name=".view.Web.HotWebViewActivity" />
         <activity android:name=".view.activity.CreateActivity" />
         <activity android:name=".view.activity.BaseActivity" />
-        <activity
-            android:name=".view.adapter.LoginActivity"
-            android:label="@string/title_activity_login"
-            android:theme="@style/AppTheme" />
         <activity android:name=".view.activity.VideoActivity" />
         <activity android:name=".view.activity.CrossTalkActivity"></activity>
     </application>

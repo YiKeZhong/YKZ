@@ -8,4 +8,10 @@
 
     <color name="color_text_selected">#29B6F6</color>
     <color name="color_text_normal">#918D91</color>
+    <color name="black">#000000</color>
+    <color name="trans">#00000000</color>
+    <color name="alertdialog_line">#c6c6c6</color>
+    <color name="actionsheet_blue">#037BFF</color>
+    <color name="actionsheet_red">#FD4A2E</color>
+    <color name="actionsheet_gray">#8F8F8F</color>
 </resources>
