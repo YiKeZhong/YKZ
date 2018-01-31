@@ -127,8 +127,9 @@ public class HotFragment extends Fragment implements IAttenView {
                                 //Toast.makeText(getActivity(),"12"+"--"+position,Toast.LENGTH_SHORT).show();
                                 image = view.findViewById(R.id.d_image);
                                 image.setImageResource(R.drawable.breduce);
+                                //弹框
                                 showPopupWindow(view);
-                                //ImageView image_01 = view.findViewById(R.id.image_01);
+
                             }
                             private void showPopupWindow(final View vvv) {
                                 View contentView = LayoutInflater.from(getActivity()).inflate(R.layout.photo_popup_layout, null);
@@ -139,8 +140,7 @@ public class HotFragment extends Fragment implements IAttenView {
                                 mPopWindow.setOutsideTouchable(true);
                                 mPopWindow.setAnimationStyle(R.style.AnimationPreview);
                                 ColorDrawable dw = new ColorDrawable(0000000000);
-
-                               mPopWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+                                mPopWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
                                     @Override
                                     public void onDismiss() {
                                         ImageView image = vvv.findViewById(R.id.d_image);
