@@ -1,6 +1,8 @@
 package com.bwie.d.quarterhour.view.fragment;
 
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,7 +14,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bwie.d.quarterhour.R;
 import com.bwie.d.quarterhour.model.bean.AttenTJBean;
@@ -61,6 +66,8 @@ public class HotFragment extends Fragment implements IAttenView {
     private RecyclerView recyclerView;
     private TextView atten_loadingtv1;
     private SpringView attentj_springview;
+    private PopupWindow mPopWindow;
+    private ImageView image;
 
     @Nullable
     @Override
@@ -114,6 +121,43 @@ public class HotFragment extends Fragment implements IAttenView {
                         //数据加载成功时,进行隐藏动画
                         attentj_loading1.setVisibility(View.GONE);
                         atten_loadingtv1.setVisibility(View.GONE);
+                        hotAdapter.setOnItemClickListener(new HotAdapter.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(View view, int position) {
+                                //Toast.makeText(getActivity(),"12"+"--"+position,Toast.LENGTH_SHORT).show();
+                                image = view.findViewById(R.id.d_image);
+                                image.setImageResource(R.drawable.breduce);
+                                showPopupWindow(view);
+                                //ImageView image_01 = view.findViewById(R.id.image_01);
+                            }
+                            private void showPopupWindow(final View vvv) {
+                                View contentView = LayoutInflater.from(getActivity()).inflate(R.layout.photo_popup_layout, null);
+                                mPopWindow = new PopupWindow(contentView,
+                                        ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
+                                mPopWindow.setContentView(contentView);
+                                mPopWindow.setBackgroundDrawable(new BitmapDrawable());
+                                mPopWindow.setOutsideTouchable(true);
+                                mPopWindow.setAnimationStyle(R.style.AnimationPreview);
+                                ColorDrawable dw = new ColorDrawable(0000000000);
+
+                               mPopWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+                                    @Override
+                                    public void onDismiss() {
+                                        ImageView image = vvv.findViewById(R.id.d_image);
+
+                                        image.setImageResource(R.drawable.badd);
+                                    }
+                                });
+
+                                contentView.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
+                                int  mShowMorePopupWindowWidth = -contentView.getMeasuredWidth();
+                                int  mShowMorePopupWindowHeight = -contentView.getMeasuredHeight();
+                                mPopWindow.showAsDropDown(vvv,mShowMorePopupWindowWidth, mShowMorePopupWindowHeight);
+
+                            }
+                        });
+
+
                     }
                 }
 

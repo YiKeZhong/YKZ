@@ -43,18 +43,19 @@
             android:layout_weight="4"
             android:layout_height="match_parent">
             <View
+                android:paddingBottom="5dp"
                 android:layout_width="0dp"
                 android:layout_weight="3"
                 android:layout_height="match_parent"/>
             <ImageView
-                android:id="@+id/tj_atten_imgjia"
+                android:id="@+id/d_image"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="40dp"
                 android:src="@drawable/jiahao"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:layout_gravity="center_vertical"/>
+                android:layout_gravity="center_vertical" />
         </LinearLayout>
     </LinearLayout>
     <LinearLayout

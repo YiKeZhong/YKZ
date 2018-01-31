@@ -3,9 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#FFFFFF"
     xmlns:fresco="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
+        android:padding="16dp"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -118,6 +121,7 @@
             fresco:placeholderImage="@drawable/cross_jia"/>-->
     </LinearLayout>
         <TextView
+            android:paddingLeft="16dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="今天来上班时，同事小李走路有点踉跄！我问：怎么了这是？小李伤感道：菊花被一个老女人搞得好痛！我眉毛一挑：我去，这是发生了什么禁忌活动啊！小李：想什么呢，我就是老干妈吃多了！"/>

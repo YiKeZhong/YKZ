@@ -80,7 +80,7 @@ public class HotAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
 
         if (holder instanceof ViewHolder1){
 
@@ -153,6 +153,15 @@ public class HotAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             //进行播放视频
             ((lineViewHolder) holder).tjattenvideo.setUp(vidoe_url,JZVideoPlayerStandard.SCREEN_WINDOW_NORMAL,"");
             Glide.with(context).load(big_img).into(((lineViewHolder) holder).tjattenvideo.thumbImageView);
+            //图片的点击事件
+            ((lineViewHolder) holder).dimage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mOnItemClickListener.onItemClick(v,position);
+
+
+                }
+            });
 
         }
     }
@@ -182,16 +191,29 @@ public class HotAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         TextView tjAttenTvname;
         @BindView(R.id.tj_atten_tvtime)
         TextView tjAttenTvtime;
-        @BindView(R.id.tj_atten_imgjia)
-        ImageView tjAttenImgjia;
         @BindView(R.id.tj_atten_tvtheme)
         TextView tjAttenTvtheme;
         @BindView(R.id.tj_atten_video)
         JZVideoPlayerStandard tjattenvideo;
+        private final ImageView dimage;
+
         lineViewHolder(View view) {
             super(view);
+            dimage = view.findViewById(R.id.d_image);
+
+
             ButterKnife.bind(this, view);
         }
+    }
+
+    private OnItemClickListener mOnItemClickListener;
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        mOnItemClickListener = onItemClickListener;
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(View view, int position);
     }
     //自定义的图片加载器
     private class MyLoader extends ImageLoader {

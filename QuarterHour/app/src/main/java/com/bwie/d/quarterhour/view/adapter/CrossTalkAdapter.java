@@ -204,7 +204,7 @@ public class CrossTalkAdapter extends RecyclerView.Adapter<CrossTalkAdapter.IVie
 
     @Override
     public int getItemCount() {
-        return data.size();
+        return 10;
     }
 
     static class IViewHolder extends RecyclerView.ViewHolder{
