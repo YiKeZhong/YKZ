@@ -23,6 +23,7 @@ public class FunnyRecyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     private List<String> mList = new ArrayList<>();
     private Context context;
+    private ArrayList<Integer> mHeights;
 
     public FunnyRecyAdapter(Context context) {
         this.context = context;
@@ -35,6 +36,7 @@ public class FunnyRecyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             for(int i=0;i< list.size();i++){
                 mList.add(list.get(i));
             }
+            getRandomHight();
         }
     }
 
@@ -46,9 +48,16 @@ public class FunnyRecyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             for(int i=0;i< loadList.size();i++){
                 mList.add(loadList.get(i));
             }
+            getRandomHight();
         }
     }
-
+    public void getRandomHight(){
+        mHeights = new ArrayList<>();
+        for(int i=0; i < mList.size();i++){
+            //随机的获取一个范围为200-600直接的高度
+            mHeights.add((int)(300+Math.random()*400));
+        }
+    }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -59,7 +68,13 @@ public class FunnyRecyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof FunnyViewHolder){
+
+            ViewGroup.LayoutParams layoutParams = ((FunnyViewHolder) holder).funnyText.getLayoutParams();
+            layoutParams.height = mHeights.get(position);
+            ((FunnyViewHolder) holder).funnyText.setLayoutParams(layoutParams);
+
             ((FunnyViewHolder) holder).funnyText.setText(mList.get(position));
+
         }
     }
 
