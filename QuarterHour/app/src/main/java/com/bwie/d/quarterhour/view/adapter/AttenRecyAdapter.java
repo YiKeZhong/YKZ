@@ -106,7 +106,7 @@ public class AttenRecyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             ((lineViewHolder) holder).attentjshare.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    showShare();
+
                     OnekeyShare oks = new OnekeyShare();
                     //关闭sso授权
                     oks.disableSSOWhenAuthorize();
@@ -129,12 +129,7 @@ public class AttenRecyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         }
     }
 
-    /**
-     * 分享
-     */
-    private void showShare() {
 
-    }
 
     /**
      * 离开时销毁播放器

@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,7 +38,7 @@ public class Funnyfragment extends Fragment {
     private FunnyRecyAdapter funnyRecyAdapter;
     private List<String> list;
     private List<String> loadList;
-
+    private StaggeredGridLayoutManager staggeredGridLayoutManager;
 
 
     @Nullable
@@ -53,15 +54,24 @@ public class Funnyfragment extends Fragment {
     }
 
     private void initView() {
-        funnyRecyclerview.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-        funnyRecyclerview.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
+        staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL);
+        staggeredGridLayoutManager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_NONE);//设置空隙处理方式为不处理--item乱跳问题
+
+        funnyRecyclerview.setOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                staggeredGridLayoutManager.invalidateSpanAssignments();
+            }
+        });
+        funnyRecyclerview.setLayoutManager(staggeredGridLayoutManager);
         funnyRecyAdapter = new FunnyRecyAdapter(getActivity());
         funnyRecyclerview.setAdapter(funnyRecyAdapter);
     }
 
     private void initData() {
         list = new ArrayList<>();
-        for (int i = 0; i < 30; i++) {
+        for (int i = 0; i < 100; i++) {
             list.add("趣图无数据" + i);
         }
     }
