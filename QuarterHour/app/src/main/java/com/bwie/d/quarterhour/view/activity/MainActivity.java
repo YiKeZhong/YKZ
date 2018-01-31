@@ -23,6 +23,8 @@ import com.suke.widget.SwitchButton;
 
 public class MainActivity extends BaseActivity{
 
+public class MainActivity extends BaseActivity{
+
 
     private SimpleDraweeView menu_icon;
     private Button radio_01;
@@ -74,6 +76,7 @@ public class MainActivity extends BaseActivity{
         initMenu();
 
         //EventBus.getDefault().register(this);
+        EventBus.getDefault().register(this);
         //圆形头像
         Uri uri = Uri.parse("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1517015634&di=064833d0a882df2da895b8ad87d2336a&imgtype=jpg&er=1&src=http%3A%2F%2Fimage.tianjimedia.com%2FuploadImages%2F2014%2F289%2F01%2FIGS09651F94M.jpg");
         draweeView = (SimpleDraweeView) findViewById(R.id.my_image_view);
@@ -179,6 +182,15 @@ public class MainActivity extends BaseActivity{
         Uri uri = Uri.parse("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1517015634&di=064833d0a882df2da895b8ad87d2336a&imgtype=jpg&er=1&src=http%3A%2F%2Fimage.tianjimedia.com%2FuploadImages%2F2014%2F289%2F01%2FIGS09651F94M.jpg");
         menu_icon.setImageURI(uri);
     }
+    @Subscribe(sticky = true)
+    public void getQQLogin(LoginqqBean loginqqBean){
+        menu_icon.setImageURI(loginqqBean.getUsertx());
+        draweeView.setImageURI(loginqqBean.getUsertx());
+        login_wm.setText(loginqqBean.getUsername());
+    }
+
+
+
 
 
     @Override
