@@ -98,7 +98,6 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/instant-run-support" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/javaPrecompile" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/jniLibs" />
-      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/lint" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/manifests" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/prebuild" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/reload-dex" />
@@ -116,6 +115,7 @@
     <content url="file://$MODULE_DIR$/../build/intermediates/Mob/assets">
       <sourceFolder url="file://$MODULE_DIR$/../build/intermediates/Mob/assets" type="java-resource" />
     </content>
+    <orderEntry type="jdk" jdkName="Android API 26 Platform" jdkType="Android SDK" />
     <orderEntry type="jdk" jdkName="Android API 26 Platform" jdkType="Android SDK" />
     <orderEntry type="jdk" jdkName="Android API 26 Platform (1)" jdkType="Android SDK" />
     <orderEntry type="jdk" jdkName="Android API 26 Platform (1)" jdkType="Android SDK" />
@@ -173,11 +173,13 @@
     <orderEntry type="library" scope="TEST" name="javax.inject:javax.inject:1@jar" level="project" />
     <orderEntry type="library" name="com.android.support:support-vector-drawable-26.1.0" level="project" />
     <orderEntry type="library" name="cn.sharesdk:ShareSDK-SinaWeibo:3.1.2@jar" level="project" />
+    <orderEntry type="library" name="__local_aars__:D.\AndroidStudioProjects\YKZ\YKZ\QuarterHour\app\libs\open_sdk_r5793.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="com.android.support:support-core-utils-26.1.0" level="project" />
     <orderEntry type="library" name="com.google.code.gson:gson:2.7@jar" level="project" />
     <orderEntry type="library" name="com.squareup.okio:okio:1.13.0@jar" level="project" />
     <orderEntry type="library" scope="TEST" name="com.android.support.test:rules-1.0.1" level="project" />
     <orderEntry type="library" name="com.squareup.retrofit2:retrofit:2.3.0@jar" level="project" />
+    <orderEntry type="library" name="__local_aars__:D.\AndroidStudioProjects\YKZ\YKZ\QuarterHour\app\libs\mta-sdk-1.6.2.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="cn.sharesdk:ShareSDK-Wechat:3.1.2@jar" level="project" />
     <orderEntry type="library" name="cn.sharesdk:ShareSDK-3.1.2" level="project" />
     <orderEntry type="library" name="cn.sharesdk:ShareSDK-Meipai:3.1.2@jar" level="project" />

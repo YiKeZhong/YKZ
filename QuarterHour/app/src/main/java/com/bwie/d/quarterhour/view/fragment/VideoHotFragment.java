@@ -1,5 +1,6 @@
 package com.bwie.d.quarterhour.view.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -14,6 +15,7 @@ import com.bwie.d.quarterhour.R;
 import com.bwie.d.quarterhour.model.bean.VideoBean;
 import com.bwie.d.quarterhour.presenter.VideoPresenter;
 import com.bwie.d.quarterhour.view.IView.VideoViewCallBack;
+import com.bwie.d.quarterhour.view.activity.VideoActivity;
 import com.bwie.d.quarterhour.view.adapter.VideoRecyclerViewAdapter;
 
 import java.util.List;
@@ -21,7 +23,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import cn.jzvd.JZVideoPlayer;
 
 /**
  * Created by 张继业 on 2018/1/26.
@@ -48,29 +49,31 @@ public class VideoHotFragment extends Fragment implements VideoViewCallBack {
         presenter.getDataVideo();
     }
 
+
+
     @Override
     public void getSuccess(VideoBean bean) {
-        List<VideoBean.DataBean> list = bean.getData();
-        reciclerHot.setLayoutManager(new StaggeredGridLayoutManager(2, LinearLayout.VERTICAL));
-        //reciclerVideo.setLayoutManager(new LinearLayoutManager(getActivity()));
-        VideoRecyclerViewAdapter adapter = new VideoRecyclerViewAdapter(getActivity(), list);
-        reciclerHot.setAdapter(adapter);
+        final List<VideoBean.DataBean> list = bean.getData();
+        if (list != null) {
+            reciclerHot.setLayoutManager(new StaggeredGridLayoutManager(2, LinearLayout.VERTICAL));
+            //reciclerVideo.setLayoutManager(new LinearLayoutManager(getActivity()));
+            VideoRecyclerViewAdapter adapter = new VideoRecyclerViewAdapter(getActivity(), list);
+            reciclerHot.setAdapter(adapter);
+
+            adapter.setOnItemClickListener(new VideoRecyclerViewAdapter.OnItemClickListener() {
+                @Override
+                public void onClick(int position) {
+
+                    Intent intent = new Intent(getActivity(), VideoActivity.class);
+                    intent.putExtra("position", position);
+                    startActivity(intent);
+                }
+            });
+        }
     }
 
     @Override
     public void getFailure(Exception e) {
 
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        JZVideoPlayer.releaseAllVideos();
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
     }
 }
