@@ -22,6 +22,6 @@ public interface IGetDataBase {
     @GET("/quarter/getVideos?type=1&page=1&source=android&appVersion=101")
     Call<HotBean> get();
 
-    @GET("/quarter/getNearVideos")
+    @GET("/quarter/getHotVideos")
     Call<VideoBean> getVideoData(@QueryMap Map<String,String> map);
 }

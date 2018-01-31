@@ -25,6 +25,8 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 
+
+
 public class MainActivity extends BaseActivity{
 
 
@@ -76,6 +78,8 @@ public class MainActivity extends BaseActivity{
     void initData() {
         //初始化数据
         initMenu();
+
+        //EventBus.getDefault().register(this);
         EventBus.getDefault().register(this);
         //ThemeManager.registerThemeChangeListener(this);
         //EventBus.getDefault().register(this);
