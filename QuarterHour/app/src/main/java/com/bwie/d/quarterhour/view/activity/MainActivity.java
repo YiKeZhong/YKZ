@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bwie.d.quarterhour.R;
+import com.bwie.d.quarterhour.model.bean.LoginqqBean;
 import com.bwie.d.quarterhour.presenter.BasePresenter;
 import com.bwie.d.quarterhour.utils.SlideMenu;
 import com.bwie.d.quarterhour.view.fragment.CrossTalkFragment;
@@ -20,8 +21,11 @@ import com.bwie.d.quarterhour.view.fragment.VideoFragment;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.suke.widget.SwitchButton;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
-public class MainActivity extends BaseActivity{
+
+
 
 public class MainActivity extends BaseActivity{
 

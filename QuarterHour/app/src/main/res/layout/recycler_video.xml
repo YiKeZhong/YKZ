@@ -3,9 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <cn.jzvd.JZVideoPlayerStandard
-        android:id="@+id/ijkplayer"
+    <ImageView
         android:layout_margin="5dp"
+        android:id="@+id/video_image"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 </LinearLayout>
