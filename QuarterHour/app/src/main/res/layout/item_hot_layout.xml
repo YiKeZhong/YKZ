@@ -58,10 +58,9 @@
                 android:layout_gravity="center_vertical" />
         </LinearLayout>
     </LinearLayout>
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/tj_atten_tvtheme"
@@ -72,12 +71,21 @@
             android:textSize="18sp" />
         <cn.jzvd.JZVideoPlayerStandard
             android:id="@+id/tj_atten_video"
+            android:layout_below="@+id/tj_atten_tvtheme"
             android:layout_width="match_parent"
             android:layout_height="220dp"
             android:layout_marginRight="16dp"
             android:layout_marginLeft="16dp"/>
+        <include layout="@layout/video_menulayout"
+            android:layout_marginTop="28dp"
+            android:layout_below="@+id/tj_atten_tvtheme"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="25dp"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content" />
         <TextView
+            android:layout_below="@+id/tj_atten_video"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-    </LinearLayout>
+    </RelativeLayout>
 </LinearLayout>

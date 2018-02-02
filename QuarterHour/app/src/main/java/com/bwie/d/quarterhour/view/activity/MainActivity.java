@@ -1,5 +1,6 @@
 package com.bwie.d.quarterhour.view.activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -42,6 +43,10 @@ public class MainActivity extends BaseActivity{
     private SwitchButton switchButton;
     private TextView login_wm;
     private SimpleDraweeView draweeView;
+    private TextView guanzhu;
+    private TextView shoucang;
+    private TextView haoyou;
+    private TextView tongzhi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +76,11 @@ public class MainActivity extends BaseActivity{
         main_bianji = findViewById(R.id.main_bianji);
         switchButton = findViewById(R.id.switch_button);
         login_wm = findViewById(R.id.login_wm);
+        //侧滑
+        guanzhu = findViewById(R.id.guanzhu);
+        shoucang = findViewById(R.id.shoucang);
+        haoyou = findViewById(R.id.haoyou);
+        tongzhi = findViewById(R.id.tongzhi);
 
     }
 
@@ -178,6 +188,37 @@ public class MainActivity extends BaseActivity{
                 startActivity(intent);
             }
         });
+
+        //关注
+        guanzhu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,AttentionActivity.class));
+
+            }
+        });
+        //收藏
+        shoucang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,CollectActivity.class));
+            }
+        });
+        //好友
+        haoyou.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,FriendActivity.class));
+            }
+        });
+        //通知
+        tongzhi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,InformActivity.class));
+            }
+        });
+
     }
 
     /**

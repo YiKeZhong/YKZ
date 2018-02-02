@@ -41,16 +41,16 @@ android {
                 QZone {
 
                 }
-                Alipay{
+                Alipay {
 
                 }
-                Meipai{
+                Meipai {
 
                 }
-                YouDao{
+                YouDao {
 
                 }
-                Dingding{
+                Dingding {
 
                 }
             }

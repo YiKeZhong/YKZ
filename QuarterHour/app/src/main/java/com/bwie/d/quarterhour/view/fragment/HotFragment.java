@@ -157,16 +157,13 @@ public class HotFragment extends Fragment implements IAttenView {
                             }
                         });
 
-
                     }
                 }
-
                 @Override
                 public void onFailure(Call<HotBean> call, Throwable t) {
                     Log.e( "onFailureshibai: ","123"+t );
                 }
             });
-
 
                 /**
                  * 关注页面
