@@ -1,7 +1,6 @@
 package com.bwie.d.quarterhour.view.fragment;
 
 import android.content.Intent;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,17 +13,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.LinearLayout;
 
 import com.bwie.d.quarterhour.R;
-import com.bwie.d.quarterhour.model.bean.VideoBean;
-import com.bwie.d.quarterhour.presenter.VideoPresenter;
-import com.bwie.d.quarterhour.view.IView.VideoViewCallBack;
-import com.bwie.d.quarterhour.view.activity.VideoActivity;
-import com.bwie.d.quarterhour.view.adapter.VideoRecyclerViewAdapter;
-
-import java.util.List;
 import com.bwie.d.quarterhour.model.bean.VideoBean;
 import com.bwie.d.quarterhour.presenter.VideoPresenter;
 import com.bwie.d.quarterhour.view.IView.VideoViewCallBack;
@@ -43,9 +33,6 @@ import butterknife.Unbinder;
  * Created by 张继业 on 2018/1/26.
  */
 
-public class VideoNearbyFragment extends Fragment implements VideoViewCallBack {
-    @BindView(R.id.recycler_nearby)
-    RecyclerView recyclerNearby;
 public class VideoNearbyFragment  extends Fragment implements VideoViewCallBack {
 
     @BindView(R.id.recicler_hot)
@@ -95,33 +82,6 @@ public class VideoNearbyFragment  extends Fragment implements VideoViewCallBack 
             //数据加载成功时,进行隐藏动画
             attentj_loading.setVisibility(View.GONE);
             atten_loadingtv.setVisibility(View.GONE);
-            adapter.setOnItemClickListener(new VideoRecyclerViewAdapter.OnItemClickListener() {
-                @Override
-                public void onClick(int position) {
-
-                    Intent intent = new Intent(getActivity(), VideoActivity.class);
-                    intent.putExtra("position", position);
-                    startActivity(intent);
-                }
-            });
-        }
-    }
-
-    @Override
-    public void getFailure(Exception e) {
-
-    }
-
-
-    @Override
-    public void getSuccess(VideoBean bean) {
-        final List<VideoBean.DataBean> list = bean.getData();
-        if (list != null) {
-            recyclerNearby.setLayoutManager(new StaggeredGridLayoutManager(2, LinearLayout.VERTICAL));
-            //reciclerVideo.setLayoutManager(new LinearLayoutManager(getActivity()));
-            VideoRecyclerViewAdapter adapter = new VideoRecyclerViewAdapter(getActivity(), list);
-            recyclerNearby.setAdapter(adapter);
-
             adapter.setOnItemClickListener(new VideoRecyclerViewAdapter.OnItemClickListener() {
                 @Override
                 public void onClick(int position) {
