@@ -208,6 +208,7 @@
                 android:gravity="center"/>
 
             <RadioButton
+                android:id="@+id/shezhi"
                 android:layout_width="0dp"
                 android:layout_height="70dp"
                 android:layout_weight="1"

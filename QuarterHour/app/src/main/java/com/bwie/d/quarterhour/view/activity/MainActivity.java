@@ -9,6 +9,7 @@ import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.bwie.d.quarterhour.R;
@@ -47,6 +48,7 @@ public class MainActivity extends BaseActivity{
     private TextView shoucang;
     private TextView haoyou;
     private TextView tongzhi;
+    private RadioButton shezhi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +83,7 @@ public class MainActivity extends BaseActivity{
         shoucang = findViewById(R.id.shoucang);
         haoyou = findViewById(R.id.haoyou);
         tongzhi = findViewById(R.id.tongzhi);
+        shezhi = findViewById(R.id.shezhi);
 
     }
 
@@ -218,6 +221,13 @@ public class MainActivity extends BaseActivity{
                 startActivity(new Intent(MainActivity.this,InformActivity.class));
             }
         });
+        shezhi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,ShiZhiActivity.class));
+            }
+        });
+
 
     }
 
