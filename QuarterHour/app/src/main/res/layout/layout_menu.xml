@@ -60,6 +60,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="16dp"/>
             <TextView
+                android:id="@+id/guanzhu"
                 android:layout_width="0dp"
                 android:layout_weight="5"
                 android:layout_marginLeft="5dp"
@@ -87,6 +88,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="16dp"/>
             <TextView
+                android:id="@+id/shoucang"
                 android:layout_width="0dp"
                 android:layout_weight="5"
                 android:layout_marginLeft="5dp"
@@ -114,6 +116,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="16dp"/>
             <TextView
+                android:id="@+id/haoyou"
                 android:layout_width="0dp"
                 android:layout_weight="5"
                 android:layout_marginLeft="5dp"
@@ -141,6 +144,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="16dp"/>
             <TextView
+                android:id="@+id/tongzhi"
                 android:layout_width="0dp"
                 android:layout_weight="5"
                 android:layout_marginLeft="5dp"
@@ -204,6 +208,7 @@
                 android:gravity="center"/>
 
             <RadioButton
+                android:id="@+id/shezhi"
                 android:layout_width="0dp"
                 android:layout_height="70dp"
                 android:layout_weight="1"

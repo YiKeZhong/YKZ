@@ -55,6 +55,7 @@
             android:layout_marginBottom="5dp"/>
 
         <TextView
+            android:id="@+id/fabiao"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="发表"
@@ -100,7 +101,8 @@
                            android:background="@null"
                            android:id="@+id/cross_edit"
                            android:hint="@string/crosstalk_edit"
-                           android:textColor="#D7D1D1"
+                           android:textColor="#000000"
+                           android:textColorHint="#D7D1D1"
                            android:layout_width="match_parent"
                            android:layout_height="wrap_content"
 
@@ -122,7 +124,7 @@
            </LinearLayout>
         </RelativeLayout>
         <RelativeLayout
-            android:background="#00fff0"
+            android:background="#DDDDDD"
             android:id="@+id/create_duanzi"
             android:layout_weight="1"
             android:layout_width="match_parent"

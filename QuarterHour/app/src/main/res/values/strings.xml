@@ -3,4 +3,9 @@
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_login_in">LoginInActivity</string>
     <string name="crosstalk_edit">分享新鲜事...</string>
+    <string name="crosstalk_baocui">保存</string>
+    <string name="crosstalk_bubaocui">不保存</string>
+    <string name="crosstalk_xj">相机</string>
+    <string name="crosstalk_xc">相册</string>
+    <string name="crosstalk_quxiao">取消</string>
 </resources>

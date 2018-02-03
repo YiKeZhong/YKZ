@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bwie.d.quarterhour.R;
@@ -48,7 +49,12 @@ public class VideoActivity extends AppCompatActivity implements VideoViewCallBac
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.activity_video);
         ButterKnife.bind(this);
-
+        videoOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(VideoActivity.this,"返回",Toast.LENGTH_SHORT).show();
+            }
+        });
 
         presenter = new VideoPresenter(this);
         presenter.getDataVideo();

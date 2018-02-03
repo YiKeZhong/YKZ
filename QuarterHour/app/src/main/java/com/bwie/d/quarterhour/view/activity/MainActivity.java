@@ -1,5 +1,6 @@
 package com.bwie.d.quarterhour.view.activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.bwie.d.quarterhour.R;
@@ -42,6 +44,11 @@ public class MainActivity extends BaseActivity{
     private SwitchButton switchButton;
     private TextView login_wm;
     private SimpleDraweeView draweeView;
+    private TextView guanzhu;
+    private TextView shoucang;
+    private TextView haoyou;
+    private TextView tongzhi;
+    private RadioButton shezhi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +78,12 @@ public class MainActivity extends BaseActivity{
         main_bianji = findViewById(R.id.main_bianji);
         switchButton = findViewById(R.id.switch_button);
         login_wm = findViewById(R.id.login_wm);
+        //侧滑
+        guanzhu = findViewById(R.id.guanzhu);
+        shoucang = findViewById(R.id.shoucang);
+        haoyou = findViewById(R.id.haoyou);
+        tongzhi = findViewById(R.id.tongzhi);
+        shezhi = findViewById(R.id.shezhi);
 
     }
 
@@ -81,6 +94,8 @@ public class MainActivity extends BaseActivity{
 
         //EventBus.getDefault().register(this);
         EventBus.getDefault().register(this);
+        //ThemeManager.registerThemeChangeListener(this);
+        //EventBus.getDefault().register(this);
         //圆形头像
         Uri uri = Uri.parse("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1517015634&di=064833d0a882df2da895b8ad87d2336a&imgtype=jpg&er=1&src=http%3A%2F%2Fimage.tianjimedia.com%2FuploadImages%2F2014%2F289%2F01%2FIGS09651F94M.jpg");
         draweeView = (SimpleDraweeView) findViewById(R.id.my_image_view);
@@ -176,6 +191,44 @@ public class MainActivity extends BaseActivity{
                 startActivity(intent);
             }
         });
+
+        //关注
+        guanzhu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,AttentionActivity.class));
+
+            }
+        });
+        //收藏
+        shoucang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,CollectActivity.class));
+            }
+        });
+        //好友
+        haoyou.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,FriendActivity.class));
+            }
+        });
+        //通知
+        tongzhi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,InformActivity.class));
+            }
+        });
+        shezhi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,ShiZhiActivity.class));
+            }
+        });
+
+
     }
 
     /**
@@ -209,4 +262,5 @@ public class MainActivity extends BaseActivity{
         //初始化Presenter
         return null;
     }
+
 }
