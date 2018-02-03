@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/rectangle"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_marginLeft="50dp"
+        android:id="@+id/fanhui"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/app"
+        android:layout_width="20dp"
+        android:layout_height="24dp" />
+
+    <LinearLayout
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+
+        <TextView
+            android:text="上传头像"
+            android:textSize="25dp"
+            android:textColor="#ffffff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <View
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"/>
+
+        <ImageView
+            android:src="@drawable/xiangji"
+            android:layout_marginRight="50dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp" />
+
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_marginLeft="50dp"
+        android:text="昵称"
+        android:layout_marginTop="40dp"
+        android:textSize="25dp"
+        android:textColor="#ffffff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/name"
+        android:hint="填写昵称"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="50dp"
+        android:textSize="35dp"
+        android:textColorHint="#6A6966"
+        android:layout_marginRight="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:text="昵称请控制在2-30个字符，支持中英文、数字、横线和下划线"
+        android:layout_below="@+id/name"
+        android:textColor="#ffffff"
+        android:layout_marginLeft="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

@@ -4,15 +4,14 @@ import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bwie.d.quarterhour.R;
 import com.bwie.d.quarterhour.model.bean.VideoBean;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -24,6 +23,7 @@ import butterknife.ButterKnife;
 public class VideoRecyclerViewAdapter extends RecyclerView.Adapter {
     Context context;
     List<VideoBean.DataBean> list;
+    private ArrayList<Integer> mHeights;
     //定义宽度
     private int itemWidth;
 
@@ -31,11 +31,6 @@ public class VideoRecyclerViewAdapter extends RecyclerView.Adapter {
         this.context = context;
         this.list = list;
 
-        //设置宽度
-        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-
-        int width = wm.getDefaultDisplay().getWidth();
-        itemWidth = width / 2;//定义固定的宽度
     }
 
     @Override
@@ -44,26 +39,20 @@ public class VideoRecyclerViewAdapter extends RecyclerView.Adapter {
         return new ViewHolder(view);
     }
 
+    public void getRandomHight(){
+        mHeights = new ArrayList<>();
+        for(int i=0; i < list.size();i++){
+            //随机的获取一个范围为200-600直接的高度
+            mHeights.add((int)(300+Math.random()*400));
+        }
+    }
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         ViewHolder holder1 = (ViewHolder) holder;
-        //设置高
-        ViewGroup.LayoutParams params = holder1.videoImage.getLayoutParams();
-
-        //初始高度300
-        int itemHeight = 300;
-
-        itemHeight = new Random().nextInt(500);
-        if (itemHeight < 300) {
-            itemHeight = 300;
-        }
-
-        //给imageview设置宽高
-        params.width = itemWidth;
-        params.height = itemHeight;
-
-        holder1.videoImage.setLayoutParams(params);
-
+        getRandomHight();
+        ViewGroup.LayoutParams layoutParams = holder1.videoImage.getLayoutParams();
+        layoutParams.height = mHeights.get(position);
+        holder1.videoImage.setLayoutParams(layoutParams);
         holder1.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

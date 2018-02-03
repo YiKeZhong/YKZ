@@ -3,6 +3,8 @@ package com.bwie.d.quarterhour.presenter;
 
 import com.bwie.d.quarterhour.model.Imodel.VideoModel;
 import com.bwie.d.quarterhour.model.bean.VideoBean;
+import com.bwie.d.quarterhour.model.bean.VideoNearBean;
+import com.bwie.d.quarterhour.view.IView.VideoNearViewCallBack;
 import com.bwie.d.quarterhour.view.IView.VideoViewCallBack;
 
 /**
@@ -12,6 +14,7 @@ import com.bwie.d.quarterhour.view.IView.VideoViewCallBack;
 public class VideoPresenter extends BasePresenter<VideoViewCallBack> {
 
     VideoViewCallBack viewCallBack;
+    VideoNearViewCallBack nearViewCallBack;
     VideoModel videoModel;
 
     public VideoPresenter(VideoViewCallBack viewCallBack) {
@@ -19,6 +22,10 @@ public class VideoPresenter extends BasePresenter<VideoViewCallBack> {
         videoModel = new VideoModel();
     }
 
+    public VideoPresenter(VideoNearViewCallBack viewCallBack){
+        this.nearViewCallBack = viewCallBack;
+        videoModel = new VideoModel();
+    }
     public void getDataVideo(){
         videoModel.getVideoData(new VideoModel.VideoModelCallBack() {
             @Override
@@ -33,6 +40,19 @@ public class VideoPresenter extends BasePresenter<VideoViewCallBack> {
         });
     }
 
+    public void getVideoNearData(String latitude, String longitude){
+        videoModel.getNearbyVideo(new VideoModel.VideoNearModelCallBack() {
+            @Override
+            public void getSuccess(VideoNearBean bean) {
+                nearViewCallBack.getSuccess(bean);
+            }
+
+            @Override
+            public void getFailure(Exception e) {
+                nearViewCallBack.getFailure(e);
+            }
+        },latitude,longitude);
+    }
     public void detachView() {//解除关联
         if (videoModel != null) {
             videoModel = null;

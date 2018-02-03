@@ -2,6 +2,7 @@ package com.bwie.d.quarterhour.utils;
 
 import com.bwie.d.quarterhour.model.bean.HotBean;
 import com.bwie.d.quarterhour.model.bean.VideoBean;
+import com.bwie.d.quarterhour.model.bean.VideoNearBean;
 
 import java.util.Map;
 
@@ -24,4 +25,8 @@ public interface IGetDataBase {
 
     @GET("/quarter/getHotVideos")
     Call<VideoBean> getVideoData(@QueryMap Map<String,String> map);
+
+    //https://www.zhaoapi.cn/quarter/getNearVideos?page=1&latitude=37.422006&longitude=-122.084095&token=10&source=android&appVersion=101
+    @GET("/quarter/getNearVideos")
+    Call<VideoNearBean> getNearbyData(@QueryMap Map<String,String> map);
 }
