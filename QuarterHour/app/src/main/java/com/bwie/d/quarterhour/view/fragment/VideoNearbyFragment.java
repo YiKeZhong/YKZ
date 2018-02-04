@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bwie.d.quarterhour.R;
 import com.bwie.d.quarterhour.model.bean.VideoBean;
@@ -39,6 +38,9 @@ public class VideoNearbyFragment  extends Fragment implements VideoViewCallBack 
     @BindView(R.id.recicler_hot)
     RecyclerView reciclerHot;
     Unbinder unbinder;
+
+    private VideoPresenter presenter;
+
     private ZLoadingView attentj_loading;
     private TextView atten_loadingtv;
     private ImageView image;
@@ -58,6 +60,9 @@ public class VideoNearbyFragment  extends Fragment implements VideoViewCallBack 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        presenter = new VideoPresenter(this);
+        presenter.getDataVideo();
         VideoPresenter presenter = new VideoPresenter(this);
         presenter.getDataVideo();
     }
@@ -93,4 +98,5 @@ public class VideoNearbyFragment  extends Fragment implements VideoViewCallBack 
     public void getFailure(Exception e) {
 
     }
+
 }

@@ -1,10 +1,16 @@
 package com.bwie.d.quarterhour.model.Imodel;
 
 import com.bwie.d.quarterhour.model.bean.VideoBean;
+import com.bwie.d.quarterhour.model.bean.VideoNearBean;
+import com.bwie.d.quarterhour.model.retrofit.AbstractObserver;
+import com.bwie.d.quarterhour.model.retrofit.RetrofitUtils;
 import com.bwie.d.quarterhour.utils.IGetDataBase;
 
 import java.util.HashMap;
 
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -44,12 +50,38 @@ public class VideoModel {
         });
         
     }
+//    //https://www.zhaoapi.cn/quarter/getNearVideos?page=1&latitude=37.422006&longitude=-122.084095&token=10&source=android&appVersion=101
 
-    public void getNearbyVideo(){
+    public void getNearbyVideo(final VideoNearModelCallBack callBack, String latitude, String longitude){
 
+        HashMap<String, String> map = new HashMap<>();
+        map.put("token","10");
+        map.put("source","android");
+        map.put("appVersion","101");
+        map.put("page","1");
+        map.put("latitude",latitude);
+        map.put("longitude",longitude);
+        RetrofitUtils.getInstance().get("https://www.zhaoapi.cn",map)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new AbstractObserver<VideoNearBean>() {
+                    @Override
+                    public void success(VideoNearBean videoNearBean) {
+                        callBack.getSuccess(videoNearBean);
+                    }
+
+                    @Override
+                    public void onfailure(Disposable d) {
+                        callBack.getFailure(new Exception());
+                    }
+                });
     }
     public interface VideoModelCallBack{
         public void getSuccess(VideoBean bean);
+        public void getFailure(Exception e);
+    }
+    public interface VideoNearModelCallBack{
+        public void getSuccess(VideoNearBean bean);
         public void getFailure(Exception e);
     }
 }
