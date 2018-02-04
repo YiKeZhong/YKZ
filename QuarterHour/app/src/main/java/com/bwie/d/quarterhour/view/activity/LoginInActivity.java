@@ -1,5 +1,7 @@
 package com.bwie.d.quarterhour.view.activity;
 
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -27,6 +29,7 @@ public class LoginInActivity extends AppCompatActivity implements LoginCallBack 
     Button loginDeng;
     private LoginPresenter loginPresenter;
     private TextView login_text;
+    private TextView zhucezhanghao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +37,7 @@ public class LoginInActivity extends AppCompatActivity implements LoginCallBack 
         setContentView(R.layout.content_login_in);
         ButterKnife.bind(this);
         login_text = findViewById(R.id.login_text);
+        zhucezhanghao = findViewById(R.id.zhucezhanghao);
         login_text.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,10 +55,31 @@ public class LoginInActivity extends AppCompatActivity implements LoginCallBack 
                 }
             }
         });
+        //注册
+        zhucezhanghao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginInActivity.this,RegisterActivity.class));
+            }
+        });
     }
 
     @Override
     public void success(LoginInBean loginInBean) {
         Toast.makeText(LoginInActivity.this,loginInBean.getMsg().toString(),Toast.LENGTH_SHORT).show();
+    }
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus && Build.VERSION.SDK_INT >= 19) {
+            View decorView = getWindow().getDecorView();
+            decorView.setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                            | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                            | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                            | View.SYSTEM_UI_FLAG_FULLSCREEN
+                            | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+        }
     }
 }
