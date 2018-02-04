@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#ffffff"
+    android:padding="5dp"
+    android:gravity="center_vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto">
+    <View
+        android:id="@+id/_1"
+        android:layout_width="10dp"
+        android:layout_height="10dp"/>
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:layout_toRightOf="@id/_1"
+        android:id="@+id/att_tupian"
+        fresco:roundedCornerRadius="90dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        />
+    <View
+        android:id="@+id/_2"
+        android:layout_toRightOf="@id/att_tupian"
+        android:layout_width="30dp"
+        android:layout_height="10dp"/>
+    <TextView
+        android:paddingTop="20dp"
+        android:layout_toRightOf="@id/_2"
+        android:id="@+id/att_xaingming"
+        android:textSize="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="12312"
+        />
+    <TextView
+        android:paddingTop="20dp"
+        android:id="@+id/att_shijian"
+        android:gravity="right"
+        android:text="12312"
+        android:textSize="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

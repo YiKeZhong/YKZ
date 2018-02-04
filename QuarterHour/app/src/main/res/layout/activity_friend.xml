@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -55,7 +57,7 @@
             android:textColor="#ffffff"
             android:textSize="18sp"
             android:id="@+id/shanchu"
-            android:text="删除"
+            android:text="       "
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <View
@@ -64,5 +66,35 @@
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"/>
     </LinearLayout>
+   <LinearLayout
+       android:orientation="horizontal"
+       android:padding="10dp"
+       android:background="#EBEBEB"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+       <EditText
 
-</android.support.constraint.ConstraintLayout>
+           android:background="#ffffff"
+           android:id="@+id/reien_edit"
+           android:layout_weight="1"
+           android:layout_width="0dp"
+           android:layout_height="40dp" />
+       <View
+           android:layout_width="10dp"
+           android:layout_height="0dp"/>
+       <TextView
+            android:id="@+id/friend_text"
+           android:gravity="center"
+           android:textSize="20dp"
+           android:layout_toRightOf="@+id/reien_edit"
+           android:layout_width="wrap_content"
+           android:layout_height="40dp"
+           android:text="确定"
+           />
+   </LinearLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/friend_recy"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+    
+</LinearLayout>
