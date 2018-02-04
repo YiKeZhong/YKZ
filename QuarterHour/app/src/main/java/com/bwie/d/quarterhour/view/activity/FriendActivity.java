@@ -75,7 +75,7 @@ public class FriendActivity extends BaseActivity {
                                 FriendAdapter friendAdapter = new FriendAdapter(FriendActivity.this,data);
                                 friend_recy.setAdapter(friendAdapter);
                             }else {
-                                Log.e( "onResponse456456: ","12" );
+                                Toast.makeText(FriendActivity.this,"无此用户",Toast.LENGTH_SHORT).show();
                             }
 
                         }

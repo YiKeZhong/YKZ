@@ -37,7 +37,7 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.ViewHolder
         String icon = list.get(position).getIcon();
         holder.friend_tupian.setImageURI(icon);
         holder.friend_xaingming.setText(list.get(position).getNickname());
-        holder.friend_qianming.setText(list.get(position).getAppsecret());
+        holder.friend_qianming.setText(list.get(position).getNickname());
     }
 
     @Override

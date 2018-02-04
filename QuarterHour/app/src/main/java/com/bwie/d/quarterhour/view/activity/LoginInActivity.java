@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bwie.d.quarterhour.R;
@@ -25,13 +26,20 @@ public class LoginInActivity extends AppCompatActivity implements LoginCallBack 
     @BindView(R.id.login_deng)
     Button loginDeng;
     private LoginPresenter loginPresenter;
+    private TextView login_text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_login_in);
         ButterKnife.bind(this);
-
+        login_text = findViewById(R.id.login_text);
+        login_text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         loginPresenter = new LoginPresenter(this);
         loginDeng.setOnClickListener(new View.OnClickListener() {
             @Override
